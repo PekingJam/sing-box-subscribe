@@ -56,6 +56,10 @@
         "server": "block"
       },
       {
+        "rule_set": "google_site",
+        "server": "google"
+      },
+      {
         "rule_set": "cn_site",
         "server": "tx"
       },
@@ -203,6 +207,7 @@
           "warden.dandaner.cn",
           "cloud.dandaner.cn"
         ],
+        "rule_set": "google_site",
         "outbound": "🌍 境外出口"
       },
       {
