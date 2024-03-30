@@ -146,38 +146,6 @@
       ]
     },
     {
-      "tag": "📺 Netflix",
-      "type": "selector",
-      "interrupt_exist_connections": true,
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "include",
-          "keywords": [
-            ".*\uD83D\uDD39.*\uD83D\uDD39.*"
-          ]
-        }
-      ]
-    },
-    {
-      "tag": "\uD83E\uDD16 OpenAI",
-      "type": "selector",
-      "interrupt_exist_connections": true,
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "include",
-          "keywords": [
-            "\u25aa\ufe0f"
-          ]
-        }
-      ]
-    },
-    {
       "tag": "🎈 订阅信息",
       "type": "selector",
       "outbounds": [
@@ -230,6 +198,10 @@
         "outbound": "🌍 境外出口"
       },
       {
+        "domain": [
+          "deeplx.dandaner.cn",
+          "warden.dandaner.cn"
+        ],
         "rule_set": "ncn_site",
         "outbound": "🌍 境外出口"
       },
@@ -293,22 +265,6 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/google_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "netflix",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/netflix.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "openai_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/openai_site.srs",
         "download_detour": "direct"
       }
     ]
