@@ -41,15 +41,34 @@
     -moz-border-radius:.1em;
     -border-radius:.1em;
     }
+
+    .foot {
+    position: fixed;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #888; /* 灰色 */
+    }
+
+    .foot a {
+    text-decoration: none; /* 去掉下划线 */
+    color: inherit; /* 继承父元素的颜色 */
+    }
+
 </style>
 <body>
 <div class="wrap">
     <div class="logo">
         <h1>欢迎光临</h1>
-        <p>欢迎使用singbox订阅转换系统，支持v2ray/clash.meta订阅转换</p>
+        <p>你不应该直接访问这个地址的，具体用法见博客</p>
         <div class="sub">
             <p><a href="https://www.dandaner.cn/">个人博客</a></p>
         </div>
+    </div>
+    <div class="foot">
+        <a href="https://beian.miit.gov.cn/" target="_blank">渝ICP备2022007661号-2</a>
+        <img src="https://drive.dandaner.cn/d/blog/beian/beian.png" alt="备案图片"/>
+        <a href="https://beian.mps.gov.cn/#/query/webSearch" target="_blank">渝公网安备50011802010706号</a>
     </div>
 </div>
 </body>
