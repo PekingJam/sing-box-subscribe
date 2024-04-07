@@ -13,30 +13,20 @@
       "default_mode": "rule"
     },
     "cache_file": {
-      "enabled": true,
-      "store_fakeip": false
+      "enabled": true
     }
   },
   "dns": {
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
     "servers": [
       {
         "tag": "google",
-        "address": "https://8.8.8.8/dns-query",
+        "address": "tls://8.8.8.8",
         "detour": "🌍 境外出口"
       },
       {
         "tag": "tx",
-        "address": "https://120.53.53.53/dns-query",
+        "address": "223.5.5.5",
         "detour": "direct"
-      },
-      {
-        "tag": "fakeip",
-        "address": "fakeip"
       },
       {
         "tag": "block",
@@ -69,16 +59,7 @@
       },
       {
         "clash_mode": "global",
-        "server": "fakeip"
-      },
-      {
-        "inbound": "tun",
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "fakeip",
-        "rewrite_ttl": 1
+        "server": "google"
       },
       {
         "rule_set": "ncn_site",
@@ -87,12 +68,11 @@
     ],
     "reverse_mapping": true,
     "final": "google",
-    "strategy": "prefer_ipv4",
+    "strategy": "prefer_ipv6",
     "independent_cache": true
   },
   "inbounds": [
     {
-      "tag": "tun",
       "type": "tun",
       "inet4_address": "172.19.0.0/30",
       "inet6_address": "fdfe:dcba:9876::0/126",

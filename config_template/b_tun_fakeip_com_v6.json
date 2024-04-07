@@ -26,12 +26,12 @@
     "servers": [
       {
         "tag": "google",
-        "address": "https://8.8.8.8/dns-query",
+        "address": "tls://8.8.8.8",
         "detour": "🌍 境外出口"
       },
       {
         "tag": "tx",
-        "address": "https://120.53.53.53/dns-query",
+        "address": "223.5.5.5",
         "detour": "direct"
       },
       {
