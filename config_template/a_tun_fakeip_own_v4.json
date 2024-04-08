@@ -13,15 +13,10 @@
       "default_mode": "rule"
     },
     "cache_file": {
-      "enabled": true,
-      "store_fakeip": false
+      "enabled": true
     }
   },
   "dns": {
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15"
-    },
     "servers": [
       {
         "tag": "google",
@@ -32,10 +27,6 @@
         "tag": "tx",
         "address": "223.5.5.5",
         "detour": "direct"
-      },
-      {
-        "tag": "fakeip",
-        "address": "fakeip"
       },
       {
         "tag": "block",
@@ -68,15 +59,7 @@
       },
       {
         "clash_mode": "global",
-        "server": "fakeip"
-      },
-      {
-        "inbound": "tun",
-        "query_type": [
-          "A"
-        ],
-        "server": "fakeip",
-        "rewrite_ttl": 1
+        "server": "google"
       },
       {
         "rule_set": "ncn_site",
