@@ -185,7 +185,8 @@
         "domain": [
           "deeplx.dandaner.cn",
           "warden.dandaner.cn",
-          "cloud.dandaner.cn"
+          "cloud.dandaner.cn",
+          "tz.dandaner.cn"
         ],
         "rule_set": "google_site",
         "outbound": "🌍 境外出口"
