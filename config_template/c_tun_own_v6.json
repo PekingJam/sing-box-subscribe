@@ -20,12 +20,12 @@
     "servers": [
       {
         "tag": "google",
-        "address": "tls://8.8.8.8",
+        "address": "tls://2001:4860:4860::8888",
         "detour": "🌍 境外出口"
       },
       {
         "tag": "tx",
-        "address": "223.6.6.6",
+        "address": "2400:3200::1",
         "detour": "direct"
       },
       {
