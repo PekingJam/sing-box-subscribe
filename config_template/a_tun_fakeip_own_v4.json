@@ -87,7 +87,7 @@
     ],
     "reverse_mapping": true,
     "final": "google",
-    "strategy": "prefer_ipv6",
+    "strategy": "prefer_ipv4",
     "independent_cache": true
   },
   "inbounds": [
