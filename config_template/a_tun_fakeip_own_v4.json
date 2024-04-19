@@ -202,10 +202,7 @@
         "outbound": "🌍 境外出口"
       },
       {
-        "domain_suffix": [
-          "googleapis.cn",
-          "google.cn"
-        ],
+        "rule_set": "google_site",
         "outbound": "\uD83C\uDF0D 境外出口"
       },
       {
