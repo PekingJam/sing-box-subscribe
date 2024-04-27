@@ -221,15 +221,6 @@
         "outbound": "\uD83C\uDF0D 境外出口"
       },
       {
-        "domain": [
-          "gemini.google.com",
-          "cdn.usefathom.com"
-        ],
-        "domain_suffix": [
-          "misakaf.org",
-          "anthropic.com",
-          "claude.ai"
-        ],
         "rule_set": [
           "spotify_site",
           "openai_site",
@@ -242,7 +233,8 @@
           "whatsapp_site",
           "discord_site",
           "twitch_site",
-          "bing_site"
+          "bing_site",
+          "talkatone_site"
         ],
         "outbound": "\uD83D\uDCE2 社交通讯"
       },
@@ -298,6 +290,14 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_ip.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "talkatone_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_ip.srs",
         "download_detour": "direct"
       },
       {
@@ -434,6 +434,14 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/bing_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "talkatone_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_site.srs",
         "download_detour": "direct"
       }
     ]
