@@ -235,10 +235,6 @@
         "outbound": "\uD83D\uDCE2 社交通讯"
       },
       {
-        "rule_set": "cn_site",
-        "outbound": "🇨🇳 境内出口"
-      },
-      {
         "ip_is_private": true,
         "outbound": "direct"
       },
@@ -254,6 +250,10 @@
           "talkatone_ip"
         ],
         "outbound": "\uD83D\uDCE2 社交通讯"
+      },
+      {
+        "rule_set": "cn_site",
+        "outbound": "🇨🇳 境内出口"
       }
     ],
     "rule_set": [
