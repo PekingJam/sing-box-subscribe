@@ -119,6 +119,36 @@
   ],
   "outbounds": [
     {
+      "tag": "🌍 境外出口",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "\uD83D\uDCE2 社交通讯",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+          ]
+        }
+      ]
+    },
+    {
       "tag": "🇨🇳 境内出口",
       "type": "selector",
       "outbounds": [
@@ -130,21 +160,6 @@
           "action": "include",
           "keywords": [
             "\uD83C\uDDE8\uD83C\uDDF3"
-          ]
-        }
-      ]
-    },
-    {
-      "tag": "🌍 境外出口",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "exclude",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
           ]
         }
       ]
@@ -206,6 +221,32 @@
         "outbound": "\uD83C\uDF0D 境外出口"
       },
       {
+        "domain": [
+          "gemini.google.com",
+          "cdn.usefathom.com"
+        ],
+        "domain_suffix": [
+          "misakaf.org",
+          "anthropic.com",
+          "claude.ai"
+        ],
+        "rule_set": [
+          "spotify_site",
+          "openai_site",
+          "tiktok_site",
+          "telegram_site",
+          "instagram_site",
+          "facebook_site",
+          "twitter_site",
+          "line_site",
+          "whatsapp_site",
+          "discord_site",
+          "twitch_site",
+          "bing_site"
+        ],
+        "outbound": "\uD83D\uDCE2 社交通讯"
+      },
+      {
         "rule_set": "cn_site",
         "outbound": "🇨🇳 境内出口"
       },
@@ -216,6 +257,14 @@
       {
         "rule_set": "cn_ip",
         "outbound": "🇨🇳 境内出口"
+      },
+      {
+        "rule_set": [
+          "telegram_ip",
+          "facebook_ip",
+          "twitter_ip"
+        ],
+        "outbound": "\uD83D\uDCE2 社交通讯"
       }
     ],
     "rule_set": [
@@ -225,6 +274,30 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/cn_ip.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "facebook_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/facebook_ip.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "twitter_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/twitter_ip.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "telegram_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_ip.srs",
         "download_detour": "direct"
       },
       {
@@ -268,7 +341,7 @@
         "download_detour": "direct"
       },
       {
-        "tag": "spotify",
+        "tag": "spotify_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
@@ -276,7 +349,7 @@
         "download_detour": "direct"
       },
       {
-        "tag": "openai",
+        "tag": "openai_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
@@ -284,7 +357,7 @@
         "download_detour": "direct"
       },
       {
-        "tag": "tiktok",
+        "tag": "tiktok_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
@@ -292,7 +365,7 @@
         "download_detour": "direct"
       },
       {
-        "tag": "twitter",
+        "tag": "twitter_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
@@ -300,11 +373,67 @@
         "download_detour": "direct"
       },
       {
-        "tag": "telegram",
+        "tag": "telegram_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "discord_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/discord_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "whatsapp_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/whatsapp_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "facebook_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/facebook_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "instagram_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/instagram_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "line_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/line_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "twitch_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/twitch_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "bing_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/bing_site.srs",
         "download_detour": "direct"
       }
     ]
