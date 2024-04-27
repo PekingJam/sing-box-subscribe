@@ -254,7 +254,8 @@
         "rule_set": [
           "telegram_ip",
           "facebook_ip",
-          "twitter_ip"
+          "twitter_ip",
+          "talkatone_ip"
         ],
         "outbound": "\uD83D\uDCE2 社交通讯"
       }
