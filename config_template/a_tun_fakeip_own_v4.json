@@ -216,10 +216,6 @@
         "outbound": "🌍 境外出口"
       },
       {
-        "rule_set": "google_site",
-        "outbound": "\uD83C\uDF0D 境外出口"
-      },
-      {
         "rule_set": [
           "spotify_site",
           "openai_site",
