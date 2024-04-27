@@ -31,7 +31,7 @@
       },
       {
         "tag": "tx",
-        "address": "223.6.6.6",
+        "address": "223.5.5.5",
         "detour": "direct"
       },
       {
@@ -87,7 +87,6 @@
     ],
     "reverse_mapping": true,
     "final": "google",
-    "strategy": "ipv4_only",
     "independent_cache": true
   },
   "inbounds": [
