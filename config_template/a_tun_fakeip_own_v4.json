@@ -26,8 +26,8 @@
     "servers": [
       {
         "tag": "google",
-        "address": "tls://8.8.8.8",
-        "detour": "🌍 境外出口"
+        "address": "tls://1.1.1.1",
+        "detour": "\uD83C\uDF10 DNS"
       },
       {
         "tag": "tx",
@@ -175,6 +175,21 @@
           "action": "include",
           "keywords": [
             "\uD83D\uDFE2"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "\uD83C\uDF10 DNS",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
           ]
         }
       ]
