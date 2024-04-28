@@ -230,7 +230,8 @@
           "discord_site",
           "twitch_site",
           "bing_site",
-          "talkatone_site"
+          "talkatone_site",
+          "protonmail_site"
         ],
         "outbound": "\uD83D\uDCE2 社交通讯"
       },
@@ -439,6 +440,14 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "protonmail_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/protonmail_site.srs",
         "download_detour": "direct"
       }
     ]
