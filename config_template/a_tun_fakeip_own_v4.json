@@ -235,7 +235,6 @@
         "rule_set": [
           "spotify_site",
           "openai_site",
-          "tiktok_site",
           "telegram_site",
           "instagram_site",
           "facebook_site",
@@ -251,7 +250,10 @@
         "outbound": "\uD83D\uDCE2 社交通讯"
       },
       {
-        "rule_set": "google_site",
+        "rule_set": [
+          "tiktok_site",
+          "google_site"
+        ],
         "outbound": "\uD83C\uDF0D 境外出口"
       },
       {
