@@ -5,7 +5,7 @@
   },
   "experimental": {
     "clash_api": {
-      "external_controller": "127.0.0.1:32590",
+      "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
       "secret": "",
       "external_ui_download_url": "https://drive.dandaner.cn/d/sub/singbox/dashboard/yacd.zip",
@@ -13,20 +13,29 @@
       "default_mode": "rule"
     },
     "cache_file": {
-      "enabled": true
+      "enabled": true,
+      "store_fakeip": false
     }
   },
   "dns": {
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "10.10.0.0/15"
+    },
     "servers": [
       {
         "tag": "google",
-        "address": "2001:4860:4860::8888",
-        "detour": "🌍 境外出口"
+        "address": "tls://8.8.8.8",
+        "detour": "\uD83C\uDF0D 境外出口"
       },
       {
         "tag": "tx",
-        "address": "2400:3200::1",
+        "address": "223.5.5.5",
         "detour": "direct"
+      },
+      {
+        "tag": "fakeip",
+        "address": "fakeip"
       },
       {
         "tag": "block",
@@ -62,60 +71,78 @@
         "server": "google"
       },
       {
-        "rule_set": "ncn_site",
-        "server": "google"
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip",
+        "rewrite_ttl": 1
       }
     ],
     "reverse_mapping": true,
     "final": "google",
-    "strategy": "prefer_ipv6",
+    "strategy": "ipv4_only",
     "independent_cache": true
   },
   "inbounds": [
     {
+      "tag": "tun",
       "type": "tun",
-      "inet4_address": "172.19.0.0/30",
-      "inet6_address": "fdfe:dcba:9876::0/126",
+      "interface_name": "tnu0",
+      "inet4_address": "172.19.0.1/30",
       "stack": "system",
       "strict_route": true,
       "auto_route": true,
-      "sniff_override_destination": true,
+      "sniff_override_destination": false,
       "sniff": true,
-      "platform": {
-        "http_proxy": {
-          "enabled": false,
-          "server": "127.0.0.1",
-          "server_port": 32580
-        }
-      }
-    },
-    {
-      "tag": "mixed",
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 32580,
-      "sniff": true
+      "exclude_package": [
+        "cn.gov.pbc.dcep",
+        "com.eg.android.AlipayGphone",
+        "com.tencent.mm",
+        "com.xunmeng.pinduoduo",
+        "com.tencent.mobileqq",
+        "com.duxiaoman.umoney",
+        "com.fenqile.fenqile",
+        "com.ct.client",
+        "com.sinovatech.unicom.ui",
+        "com.jd.jrapp",
+        "com.MobileTicket",
+        "com.tmri.app.main",
+        "com.zl.fqbao",
+        "com.taobao.taobao",
+        "com.sankuai.meituan.takeoutnew",
+        "com.autonavi.minimap",
+        "com.cmbchina.ccd.pluto.cmbActivity",
+        "com.chinamworld.main",
+        "com.taobao.idlefish",
+        "me.ele",
+        "com.tencent.wetype",
+        "com.android.bankabc",
+        "com.sankuai.meituan.dispatch.crowdsource",
+        "com.sdu.didi.psnger",
+        "me.ele.crowdsource",
+        "com.jingdong.app.mall"
+      ]
     }
   ],
   "outbounds": [
     {
-      "tag": "🇨🇳 境内出口",
+      "tag": "🌍 境外出口",
       "type": "selector",
       "outbounds": [
-        "{all}",
-        "direct"
+        "{all}"
       ],
       "filter": [
         {
-          "action": "include",
+          "action": "exclude",
           "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3"
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
           ]
         }
       ]
     },
     {
-      "tag": "🌍 境外出口",
+      "tag": "🎵 字节跳动",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -182,30 +209,38 @@
         "outbound": "🌍 境外出口"
       },
       {
-        "domain": [
-          "deeplx.dandaner.cn",
-          "warden.dandaner.cn",
-          "cloud.dandaner.cn",
-          "tz.dandaner.cn"
+        "rule_set": [
+          "private_site"
         ],
-        "rule_set": "google_site",
-        "outbound": "🌍 境外出口"
+        "outbound": "direct"
       },
       {
-        "rule_set": "ncn_site",
-        "outbound": "🌍 境外出口"
+        "rule_set": [
+          "google_site"
+        ],
+        "outbound": "\uD83C\uDF0D 境外出口"
+      },
+      {
+        "rule_set": [
+          "bytedance_site"
+        ],
+        "outbound": "🎵 字节跳动"
       },
       {
         "rule_set": "cn_site",
-        "outbound": "🇨🇳 境内出口"
+        "outbound": "direct"
       },
       {
         "ip_is_private": true,
         "outbound": "direct"
       },
       {
+        "rule_set": "private_ip",
+        "outbound": "direct"
+      },
+      {
         "rule_set": "cn_ip",
-        "outbound": "🇨🇳 境内出口"
+        "outbound": "direct"
       }
     ],
     "rule_set": [
@@ -242,19 +277,19 @@
         "download_detour": "direct"
       },
       {
-        "tag": "ncn_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/geolocation-!cn.srs",
-        "download_detour": "direct"
-      },
-      {
         "tag": "google_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/google_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "bytedance_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/bytedance.srs",
         "download_detour": "direct"
       }
     ]

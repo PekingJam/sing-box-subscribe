@@ -5,7 +5,7 @@
   },
   "experimental": {
     "clash_api": {
-      "external_controller": "127.0.0.1:32590",
+      "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
       "secret": "",
       "external_ui_download_url": "https://drive.dandaner.cn/d/sub/singbox/dashboard/yacd.zip",
@@ -20,14 +20,13 @@
   "dns": {
     "fakeip": {
       "enabled": true,
-      "inet4_range": "10.10.0.0/15",
-      "inet6_range": "fc00::/18"
+      "inet4_range": "10.10.0.0/15"
     },
     "servers": [
       {
         "tag": "google",
-        "address": "tls://1.1.1.1",
-        "detour": "\uD83C\uDF10 DNS"
+        "address": "tls://8.8.8.8",
+        "detour": "\uD83C\uDF0D 境外出口"
       },
       {
         "tag": "tx",
@@ -72,17 +71,12 @@
         "server": "google"
       },
       {
-        "inbound": "tun",
         "query_type": [
           "A",
           "AAAA"
         ],
         "server": "fakeip",
         "rewrite_ttl": 1
-      },
-      {
-        "rule_set": "ncn_site",
-        "server": "google"
       }
     ],
     "reverse_mapping": true,
@@ -95,25 +89,10 @@
       "tag": "tun",
       "type": "tun",
       "inet4_address": "172.19.0.1/30",
-      "inet6_address": "fdfe:dcba:9876::1/126",
-      "stack": "mixed",
+      "stack": "system",
       "strict_route": true,
       "auto_route": true,
       "sniff_override_destination": false,
-      "sniff": true,
-      "platform": {
-        "http_proxy": {
-          "enabled": false,
-          "server": "127.0.0.1",
-          "server_port": 32580
-        }
-      }
-    },
-    {
-      "tag": "mixed",
-      "type": "mixed",
-      "listen": "127.0.0.1",
-      "listen_port": 32580,
       "sniff": true
     }
   ],
@@ -134,7 +113,7 @@
       ]
     },
     {
-      "tag": "\uD83D\uDCE2 社交通讯",
+      "tag": "🎵 字节跳动",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -144,22 +123,6 @@
           "action": "exclude",
           "keywords": [
             "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
-      "tag": "🇨🇳 境内出口",
-      "type": "selector",
-      "outbounds": [
-        "{all}",
-        "direct"
-      ],
-      "filter": [
-        {
-          "action": "include",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3"
           ]
         }
       ]
@@ -175,21 +138,6 @@
           "action": "include",
           "keywords": [
             "\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
-      "tag": "\uD83C\uDF10 DNS",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "exclude",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
           ]
         }
       ]
@@ -233,49 +181,37 @@
       },
       {
         "rule_set": [
-          "spotify_site",
-          "openai_site",
-          "telegram_site",
-          "instagram_site",
-          "facebook_site",
-          "twitter_site",
-          "line_site",
-          "whatsapp_site",
-          "discord_site",
-          "twitch_site",
-          "bing_site",
-          "talkatone_site",
-          "protonmail_site"
+          "private_site"
         ],
-        "outbound": "\uD83D\uDCE2 社交通讯"
+        "outbound": "direct"
       },
       {
         "rule_set": [
-          "tiktok_site",
           "google_site"
         ],
         "outbound": "\uD83C\uDF0D 境外出口"
       },
       {
+        "rule_set": [
+          "bytedance_site"
+        ],
+        "outbound": "🎵 字节跳动"
+      },
+      {
         "rule_set": "cn_site",
-        "outbound": "🇨🇳 境内出口"
+        "outbound": "direct"
       },
       {
         "ip_is_private": true,
         "outbound": "direct"
       },
       {
-        "rule_set": "cn_ip",
-        "outbound": "🇨🇳 境内出口"
+        "rule_set": "private_ip",
+        "outbound": "direct"
       },
       {
-        "rule_set": [
-          "telegram_ip",
-          "facebook_ip",
-          "twitter_ip",
-          "talkatone_ip"
-        ],
-        "outbound": "\uD83D\uDCE2 社交通讯"
+        "rule_set": "cn_ip",
+        "outbound": "direct"
       }
     ],
     "rule_set": [
@@ -285,38 +221,6 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/cn_ip.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "facebook_ip",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/facebook_ip.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "twitter_ip",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/twitter_ip.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "telegram_ip",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_ip.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "talkatone_ip",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_ip.srs",
         "download_detour": "direct"
       },
       {
@@ -344,14 +248,6 @@
         "download_detour": "direct"
       },
       {
-        "tag": "ncn_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/geolocation-!cn.srs",
-        "download_detour": "direct"
-      },
-      {
         "tag": "google_site",
         "type": "remote",
         "format": "binary",
@@ -360,115 +256,11 @@
         "download_detour": "direct"
       },
       {
-        "tag": "spotify_site",
+        "tag": "bytedance_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/spotify_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "openai_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/openai_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "tiktok_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/tiktok_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "twitter_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/twitter_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "telegram_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "discord_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/discord_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "whatsapp_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/whatsapp_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "facebook_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/facebook_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "instagram_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/instagram_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "line_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/line_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "twitch_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/twitch_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "bing_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/bing_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "talkatone_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "protonmail_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/protonmail_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/bytedance.srs",
         "download_detour": "direct"
       }
     ]
