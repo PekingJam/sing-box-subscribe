@@ -121,7 +121,8 @@
         "com.sankuai.meituan.dispatch.crowdsource",
         "com.sdu.didi.psnger",
         "me.ele.crowdsource",
-        "com.jingdong.app.mall"
+        "com.jingdong.app.mall",
+        "com.alibaba.aliyun"
       ]
     }
   ],
