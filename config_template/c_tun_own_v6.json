@@ -75,7 +75,7 @@
       "interface_name": "tnu0",
       "inet4_address": "172.19.0.1/30",
       "stack": "system",
-      "auto_redirect": true,
+      "auto_redirect": false,
       "strict_route": true,
       "auto_route": true,
       "sniff_override_destination": false,
