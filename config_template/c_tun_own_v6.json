@@ -18,10 +18,6 @@
     }
   },
   "dns": {
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "10.10.0.0/15"
-    },
     "servers": [
       {
         "tag": "google",
@@ -32,10 +28,6 @@
         "tag": "tx",
         "address": "223.5.5.5",
         "detour": "direct"
-      },
-      {
-        "tag": "fakeip",
-        "address": "fakeip"
       },
       {
         "tag": "block",
@@ -69,14 +61,6 @@
       {
         "clash_mode": "global",
         "server": "google"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "fakeip",
-        "rewrite_ttl": 1
       }
     ],
     "reverse_mapping": true,
