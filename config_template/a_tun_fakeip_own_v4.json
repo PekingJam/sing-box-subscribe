@@ -111,21 +111,6 @@
       ]
     },
     {
-      "tag": "🎵 字节跳动",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "exclude",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
       "tag": "🎈 订阅信息",
       "type": "selector",
       "outbounds": [
@@ -191,12 +176,6 @@
       },
       {
         "rule_set": [
-          "bytedance_site"
-        ],
-        "outbound": "🎵 字节跳动"
-      },
-      {
-        "rule_set": [
           "tele_site",
           "ai_site"
         ],
@@ -258,14 +237,6 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/google_site.srs",
-        "download_detour": "direct"
-      },
-      {
-        "tag": "bytedance_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "3h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/bytedance.srs",
         "download_detour": "direct"
       },
       {
