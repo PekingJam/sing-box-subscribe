@@ -96,6 +96,22 @@
       ]
     },
     {
+      "tag": "\uD83C\uDDE8\uD83C\uDDF3 境内出口",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "include",
+          "keywords": [
+            "🇨🇳"
+          ]
+        }
+      ]
+    },
+    {
       "tag": "✈️ Telegram",
       "type": "selector",
       "outbounds": [
@@ -183,7 +199,7 @@
       },
       {
         "rule_set": "cn_site",
-        "outbound": "direct"
+        "outbound": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
       },
       {
         "ip_is_private": true,
@@ -195,7 +211,7 @@
       },
       {
         "rule_set": "cn_ip",
-        "outbound": "direct"
+        "outbound": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
       }
     ],
     "rule_set": [
