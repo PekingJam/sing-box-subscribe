@@ -1,6 +1,7 @@
 {
   "log": {
     "level": "warn",
+    "output": "/data/local/tmp/logs/warn.log",
     "timestamp": true
   },
   "experimental": {
@@ -70,13 +71,21 @@
   },
   "inbounds": [
     {
+      "type": "redirect",
+      "tag": "redirect-in",
+      "listen": "::",
+      "listen_port": 9353,
+      "sniff": true
+    },
+    {
       "tag": "tun",
       "type": "tun",
       "interface_name": "tnu0",
       "inet4_address": "172.19.0.1/30",
-      "stack": "mixed",
+      "stack": "system",
       "strict_route": true,
       "auto_route": true,
+      "auto_redirect": true,
       "sniff_override_destination": false,
       "sniff": true,
       "exclude_package": [
@@ -132,6 +141,7 @@
       "type": "selector",
       "outbounds": [
         "direct",
+        "\uD83C\uDF0D 境外出口",
         "{all}"
       ],
       "filter": [
@@ -315,6 +325,14 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/openai_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "tiktok_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/tiktok_site.srs",
         "download_detour": "direct"
       }
     ]
