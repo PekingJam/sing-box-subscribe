@@ -13,7 +13,8 @@
       "default_mode": "rule"
     },
     "cache_file": {
-      "enabled": true
+      "enabled": true,
+      "store_fakeip": false
     }
   },
   "dns": {
@@ -71,10 +72,12 @@
     {
       "tag": "tun",
       "type": "tun",
+      "interface_name": "tnu0",
       "inet4_address": "172.19.0.1/30",
-      "stack": "mixed",
+      "stack": "system",
       "strict_route": true,
       "auto_route": true,
+      "auto_redirect": false,
       "sniff_override_destination": false,
       "sniff": true
     }
@@ -100,6 +103,7 @@
       "type": "selector",
       "outbounds": [
         "direct",
+        "\uD83C\uDF0D 境外出口",
         "{all}"
       ],
       "filter": [
@@ -113,6 +117,21 @@
     },
     {
       "tag": "✈️ Telegram",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "\uD83C\uDFB6 Tiktok",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -192,6 +211,12 @@
       },
       {
         "rule_set": [
+          "tiktok_site"
+        ],
+        "outbound": "\uD83C\uDFB6 Tiktok"
+      },
+      {
+        "rule_set": [
           "tele_site",
           "ai_site"
         ],
@@ -204,6 +229,12 @@
       {
         "ip_is_private": true,
         "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "tele_ip"
+        ],
+        "outbound": "✈️ Telegram"
       },
       {
         "rule_set": "private_ip",
@@ -277,6 +308,14 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/openai_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "tiktok_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/tiktok_site.srs",
         "download_detour": "direct"
       }
     ]
