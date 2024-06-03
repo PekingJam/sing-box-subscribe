@@ -227,6 +227,12 @@
         "outbound": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
       },
       {
+        "ip_cidr": [
+          "47.242.190.1/24"
+        ],
+        "outbound": "direct"
+      },
+      {
         "ip_is_private": true,
         "outbound": "direct"
       },
@@ -235,12 +241,6 @@
           "tele_ip"
         ],
         "outbound": "✈️ Telegram"
-      },
-      {
-        "ip_cidr": [
-          "47.242.190.1/24"
-        ],
-        "outbound": "direct"
       },
       {
         "rule_set": "private_ip",
