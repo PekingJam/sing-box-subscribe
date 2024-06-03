@@ -262,6 +262,12 @@
         "outbound": "direct"
       },
       {
+        "ip_cidr": [
+          "47.242.190.1/24"
+        ],
+        "outbound": "direct"
+      },
+      {
         "rule_set": [
           "tele_ip"
         ],

@@ -237,6 +237,12 @@
         "outbound": "✈️ Telegram"
       },
       {
+        "ip_cidr": [
+          "47.242.190.1/24"
+        ],
+        "outbound": "direct"
+      },
+      {
         "rule_set": "private_ip",
         "outbound": "direct"
       },
