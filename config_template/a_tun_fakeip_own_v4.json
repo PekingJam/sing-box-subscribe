@@ -205,6 +205,12 @@
         "outbound": "direct"
       },
       {
+        "process_name": [
+          "aria2c.exe"
+        ],
+        "outbound": "✈️ Telegram"
+      },
+      {
         "rule_set": [
           "google_site"
         ],
