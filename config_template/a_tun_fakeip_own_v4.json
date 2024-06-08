@@ -78,7 +78,6 @@
       "stack": "system",
       "strict_route": true,
       "auto_route": true,
-      "auto_redirect": false,
       "sniff_override_destination": false,
       "sniff": true
     }
