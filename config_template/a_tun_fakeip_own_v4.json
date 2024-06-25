@@ -18,6 +18,11 @@
     }
   },
   "dns": {
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    },
     "servers": [
       {
         "tag": "google",
@@ -32,6 +37,10 @@
       {
         "tag": "block",
         "address": "rcode://success"
+      },
+      {
+        "tag": "fakeip",
+        "address": "fakeip"
       }
     ],
     "rules": [
@@ -61,24 +70,39 @@
       {
         "clash_mode": "global",
         "server": "google"
+      },
+      {
+        "inbound": "tun",
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip",
+        "rewrite_ttl": 1
       }
     ],
-    "reverse_mapping": true,
+    "reverse_mapping": false,
     "final": "google",
-    "strategy": "prefer_ipv6",
+    "strategy": "prefer_ipv4",
     "independent_cache": true
   },
   "inbounds": [
     {
       "tag": "tun",
       "type": "tun",
-      "interface_name": "tnu0",
       "inet4_address": "172.19.0.1/30",
       "inet6_address": "fdfe:dcba:9876::1/126",
       "stack": "system",
       "strict_route": true,
       "auto_route": true,
       "sniff_override_destination": false,
+      "sniff": true
+    },
+    {
+      "tag": "mixed",
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 7890,
       "sniff": true
     }
   ],
@@ -116,22 +140,7 @@
       ]
     },
     {
-      "tag": "✈️ Telegram",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "exclude",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
-      "tag": "\uD83C\uDFB6 Tiktok",
+      "tag": "🤖 ChatGPT",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -207,7 +216,7 @@
         "process_name": [
           "aria2c.exe"
         ],
-        "outbound": "✈️ Telegram"
+        "outbound": "\uD83E\uDD16 ChatGPT"
       },
       {
         "rule_set": [
@@ -217,36 +226,17 @@
       },
       {
         "rule_set": [
-          "tiktok_site"
-        ],
-        "outbound": "\uD83C\uDFB6 Tiktok"
-      },
-      {
-        "rule_set": [
-          "tele_site",
           "ai_site"
         ],
-        "outbound": "✈️ Telegram"
+        "outbound": "🤖 ChatGPT"
       },
       {
         "rule_set": "cn_site",
         "outbound": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
       },
       {
-        "ip_cidr": [
-          "47.242.190.1/24"
-        ],
-        "outbound": "direct"
-      },
-      {
         "ip_is_private": true,
         "outbound": "direct"
-      },
-      {
-        "rule_set": [
-          "tele_ip"
-        ],
-        "outbound": "✈️ Telegram"
       },
       {
         "rule_set": "private_ip",
