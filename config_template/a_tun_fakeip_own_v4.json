@@ -138,6 +138,21 @@
       ]
     },
     {
+      "tag": "✈️ Telegram",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+          ]
+        }
+      ]
+    },
+    {
       "tag": "🤖 ChatGPT",
       "type": "selector",
       "outbounds": [
@@ -224,6 +239,12 @@
       },
       {
         "rule_set": [
+          "tele_site"
+        ],
+        "outbound": "✈️ Telegram"
+      },
+      {
+        "rule_set": [
           "ai_site"
         ],
         "outbound": "🤖 ChatGPT"
@@ -239,6 +260,12 @@
       {
         "rule_set": "private_ip",
         "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "tele_ip"
+        ],
+        "outbound": "✈️ Telegram"
       },
       {
         "rule_set": "cn_ip",
