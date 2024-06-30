@@ -228,16 +228,16 @@
       },
       {
         "rule_set": [
-          "tele_site"
-        ],
-        "outbound": "✈️ Telegram"
-      },
-      {
-        "rule_set": [
           "ai_site",
           "talk_site"
         ],
         "outbound": "🤖 ChatGPT"
+      },
+      {
+        "rule_set": [
+          "tele_site"
+        ],
+        "outbound": "✈️ Telegram"
       },
       {
         "rule_set": "cn_site",
