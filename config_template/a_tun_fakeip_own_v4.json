@@ -14,7 +14,7 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": false
+      "store_fakeip": true
     }
   },
   "dns": {
@@ -73,8 +73,7 @@
       {
         "inbound": "tun",
         "query_type": [
-          "A",
-          "AAAA"
+          "A"
         ],
         "server": "fakeip",
         "rewrite_ttl": 1
@@ -86,16 +85,6 @@
     "independent_cache": true
   },
   "inbounds": [
-    {
-      "tag": "tun",
-      "type": "tun",
-      "inet4_address": "172.19.0.1/30",
-      "stack": "system",
-      "strict_route": true,
-      "auto_route": true,
-      "sniff_override_destination": false,
-      "sniff": true
-    },
     {
       "tag": "mixed",
       "type": "mixed",
@@ -245,7 +234,8 @@
       },
       {
         "rule_set": [
-          "ai_site"
+          "ai_site",
+          "talk_site"
         ],
         "outbound": "🤖 ChatGPT"
       },
@@ -260,6 +250,12 @@
       {
         "rule_set": "private_ip",
         "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "talk_ip"
+        ],
+        "outbound": "🤖 ChatGPT"
       },
       {
         "rule_set": [
@@ -314,11 +310,19 @@
         "download_detour": "direct"
       },
       {
-        "tag": "tele_site",
+        "tag": "talk_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "talk_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_ip.srs",
         "download_detour": "direct"
       },
       {
@@ -327,6 +331,14 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_ip.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "tele_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_site.srs",
         "download_detour": "direct"
       },
       {

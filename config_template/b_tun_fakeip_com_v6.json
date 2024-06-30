@@ -14,14 +14,13 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": false
+      "store_fakeip": true
     }
   },
   "dns": {
     "fakeip": {
       "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
+      "inet4_range": "198.18.0.0/15"
     },
     "servers": [
       {
@@ -90,8 +89,10 @@
     {
       "tag": "tun",
       "type": "tun",
-      "inet4_address": "172.19.0.1/30",
-      "inet6_address": "fdfe:dcba:9876::1/126",
+      "address": [
+        "172.18.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
       "stack": "system",
       "strict_route": true,
       "auto_route": true,
@@ -135,6 +136,21 @@
           "action": "include",
           "keywords": [
             "🇨🇳"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "✈️ Telegram",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
           ]
         }
       ]
@@ -226,7 +242,14 @@
       },
       {
         "rule_set": [
-          "ai_site"
+          "tele_site"
+        ],
+        "outbound": "✈️ Telegram"
+      },
+      {
+        "rule_set": [
+          "ai_site",
+          "talk_site"
         ],
         "outbound": "🤖 ChatGPT"
       },
@@ -241,6 +264,18 @@
       {
         "rule_set": "private_ip",
         "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "talk_ip"
+        ],
+        "outbound": "🤖 ChatGPT"
+      },
+      {
+        "rule_set": [
+          "tele_ip"
+        ],
+        "outbound": "✈️ Telegram"
       },
       {
         "rule_set": "cn_ip",
@@ -289,11 +324,19 @@
         "download_detour": "direct"
       },
       {
-        "tag": "tele_site",
+        "tag": "talk_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "talk_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_ip.srs",
         "download_detour": "direct"
       },
       {
@@ -302,6 +345,14 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_ip.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "tele_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_site.srs",
         "download_detour": "direct"
       },
       {
