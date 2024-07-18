@@ -30,7 +30,7 @@
       },
       {
         "tag": "tx",
-        "address": "tls://223.5.5.5",
+        "address": "tls://119.29.29.29",
         "detour": "direct"
       },
       {
