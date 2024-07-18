@@ -31,7 +31,7 @@
       },
       {
         "tag": "tx",
-        "address": "tls://119.29.29.29",
+        "address": "119.29.29.29",
         "detour": "direct"
       },
       {
