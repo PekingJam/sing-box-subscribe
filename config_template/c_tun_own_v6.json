@@ -1,7 +1,6 @@
 {
   "log": {
     "level": "warn",
-    "output": "/data/local/tmp/logs/warn.log",
     "timestamp": true
   },
   "experimental": {
@@ -15,10 +14,15 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": false
+      "store_fakeip": true
     }
   },
   "dns": {
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    },
     "servers": [
       {
         "tag": "google",
@@ -27,12 +31,16 @@
       },
       {
         "tag": "tx",
-        "address": "223.5.5.5",
+        "address": "tls://223.5.5.5",
         "detour": "direct"
       },
       {
         "tag": "block",
         "address": "rcode://success"
+      },
+      {
+        "tag": "fakeip",
+        "address": "fakeip"
       }
     ],
     "rules": [
@@ -62,55 +70,42 @@
       {
         "clash_mode": "global",
         "server": "google"
+      },
+      {
+        "inbound": "tun",
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip",
+        "rewrite_ttl": 1
       }
     ],
-    "reverse_mapping": true,
+    "reverse_mapping": false,
     "final": "google",
-    "strategy": "prefer_ipv6",
+    "strategy": "ipv4_only",
     "independent_cache": true
   },
   "inbounds": [
     {
       "tag": "tun",
       "type": "tun",
-      "interface_name": "tnu0",
-      "inet4_address": "172.19.0.1/30",
-      "inet6_address": "fdfe:dcba:9876::1/126",
+      "address": [
+        "172.18.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
       "stack": "system",
       "strict_route": true,
       "auto_route": true,
       "sniff_override_destination": false,
-      "sniff": true,
-      "exclude_package": [
-        "cn.gov.pbc.dcep",
-        "com.eg.android.AlipayGphone",
-        "com.tencent.mm",
-        "com.xunmeng.pinduoduo",
-        "com.tencent.mobileqq",
-        "com.duxiaoman.umoney",
-        "com.fenqile.fenqile",
-        "com.ct.client",
-        "com.sinovatech.unicom.ui",
-        "com.jd.jrapp",
-        "com.MobileTicket",
-        "com.tmri.app.main",
-        "com.zl.fqbao",
-        "com.taobao.taobao",
-        "com.sankuai.meituan.takeoutnew",
-        "com.autonavi.minimap",
-        "com.cmbchina.ccd.pluto.cmbActivity",
-        "com.chinamworld.main",
-        "com.taobao.idlefish",
-        "me.ele",
-        "com.tencent.wetype",
-        "com.android.bankabc",
-        "com.sankuai.meituan.dispatch.crowdsource",
-        "com.sdu.didi.psnger",
-        "me.ele.crowdsource",
-        "com.jingdong.app.mall",
-        "com.alibaba.aliyun",
-        "com.carriez.flutter_hbb"
-      ]
+      "sniff": true
+    },
+    {
+      "tag": "mixed",
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 7890,
+      "sniff": true
     }
   ],
   "outbounds": [
@@ -162,7 +157,7 @@
       ]
     },
     {
-      "tag": "\uD83C\uDFB6 Tiktok",
+      "tag": "🤖 ChatGPT",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -235,6 +230,12 @@
         "outbound": "direct"
       },
       {
+        "process_name": [
+          "aria2c.exe"
+        ],
+        "outbound": "\uD83E\uDD16 ChatGPT"
+      },
+      {
         "rule_set": [
           "google_site"
         ],
@@ -242,14 +243,14 @@
       },
       {
         "rule_set": [
-          "tiktok_site"
+          "ai_site",
+          "talk_site"
         ],
-        "outbound": "\uD83C\uDFB6 Tiktok"
+        "outbound": "🤖 ChatGPT"
       },
       {
         "rule_set": [
-          "tele_site",
-          "ai_site"
+          "tele_site"
         ],
         "outbound": "✈️ Telegram"
       },
@@ -262,20 +263,20 @@
         "outbound": "direct"
       },
       {
-        "ip_cidr": [
-          "47.242.190.1/24"
-        ],
+        "rule_set": "private_ip",
         "outbound": "direct"
+      },
+      {
+        "rule_set": [
+          "talk_ip"
+        ],
+        "outbound": "🤖 ChatGPT"
       },
       {
         "rule_set": [
           "tele_ip"
         ],
         "outbound": "✈️ Telegram"
-      },
-      {
-        "rule_set": "private_ip",
-        "outbound": "direct"
       },
       {
         "rule_set": "cn_ip",
@@ -324,11 +325,19 @@
         "download_detour": "direct"
       },
       {
-        "tag": "tele_site",
+        "tag": "talk_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_site.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "talk_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_ip.srs",
         "download_detour": "direct"
       },
       {
@@ -337,6 +346,14 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_ip.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "tele_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_site.srs",
         "download_detour": "direct"
       },
       {
