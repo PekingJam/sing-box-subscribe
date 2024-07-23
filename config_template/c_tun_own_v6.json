@@ -26,7 +26,7 @@
     "servers": [
       {
         "tag": "google",
-        "address": "https://8.8.8.8/dns-query",
+        "address": "tls://8.8.8.8",
         "detour": "\uD83C\uDF0D 境外出口"
       },
       {
