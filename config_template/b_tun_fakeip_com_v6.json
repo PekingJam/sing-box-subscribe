@@ -234,6 +234,13 @@
         "outbound": "\uD83E\uDD16 ChatGPT"
       },
       {
+        "protocol": [
+          "stun",
+          "quic"
+        ],
+        "outbound": "block"
+      },
+      {
         "rule_set": [
           "google_site"
         ],

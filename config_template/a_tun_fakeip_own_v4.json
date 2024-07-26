@@ -215,6 +215,13 @@
         "outbound": "direct"
       },
       {
+        "protocol": [
+          "stun",
+          "quic"
+        ],
+        "outbound": "block"
+      },
+      {
         "process_name": [
           "aria2c.exe"
         ],
