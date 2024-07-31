@@ -13,19 +13,14 @@
       "default_mode": "rule"
     },
     "cache_file": {
-      "enabled": true,
-      "store_fakeip": true
+      "enabled": true
     }
   },
   "dns": {
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15"
-    },
     "servers": [
       {
         "tag": "google",
-        "address": "tls://8.8.8.8",
+        "address": "https://8.8.8.8/dns-query",
         "detour": "\uD83C\uDF0D 境外出口"
       },
       {
@@ -69,15 +64,6 @@
       {
         "clash_mode": "global",
         "server": "google"
-      },
-      {
-        "inbound": "tun",
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "fakeip",
-        "rewrite_ttl": 1
       }
     ],
     "reverse_mapping": false,

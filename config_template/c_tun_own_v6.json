@@ -18,15 +18,10 @@
     }
   },
   "dns": {
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
     "servers": [
       {
         "tag": "google",
-        "address": "tls://8.8.8.8",
+        "address": "https://8.8.8.8/dns-query",
         "detour": "\uD83C\uDF0D 境外出口"
       },
       {
@@ -37,10 +32,6 @@
       {
         "tag": "block",
         "address": "rcode://success"
-      },
-      {
-        "tag": "fakeip",
-        "address": "fakeip"
       }
     ],
     "rules": [
@@ -70,15 +61,6 @@
       {
         "clash_mode": "global",
         "server": "google"
-      },
-      {
-        "inbound": "tun",
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "fakeip",
-        "rewrite_ttl": 1
       }
     ],
     "reverse_mapping": false,
@@ -228,13 +210,6 @@
           "private_site"
         ],
         "outbound": "direct"
-      },
-      {
-        "protocol": [
-          "stun",
-          "quic"
-        ],
-        "outbound": "block"
       },
       {
         "process_name": [
