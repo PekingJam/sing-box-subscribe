@@ -8,7 +8,7 @@
       "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
       "secret": "",
-      "external_ui_download_url": "https://pan.889969.xyz/d/oracle/singbox/dashboard/yacd.zip",
+      "external_ui_download_url": "https://drive.dandaner.cn/d/sub/singbox/dashboard/yacd.zip",
       "external_ui_download_detour": "🌍 境外出口",
       "default_mode": "rule"
     },
@@ -259,7 +259,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://pan.889969.xyz/d/oracle/singbox/rule_set/cn_ip.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/cn_ip.srs",
         "download_detour": "🌍 境外出口"
       },
       {
@@ -267,7 +267,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://pan.889969.xyz/d/oracle/singbox/rule_set/cn_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/cn_site.srs",
         "download_detour": "🌍 境外出口"
       },
       {
@@ -275,7 +275,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://pan.889969.xyz/d/oracle/singbox/rule_set/private_ip.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/private_ip.srs",
         "download_detour": "🌍 境外出口"
       },
       {
@@ -283,7 +283,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://pan.889969.xyz/d/oracle/singbox/rule_set/private_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/private_site.srs",
         "download_detour": "🌍 境外出口"
       },
       {
@@ -291,7 +291,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://pan.889969.xyz/d/oracle/singbox/rule_set/google_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/google_site.srs",
         "download_detour": "🌍 境外出口"
       },
       {
@@ -299,7 +299,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://pan.889969.xyz/d/oracle/singbox/rule_set/talkatone_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_site.srs",
         "download_detour": "🌍 境外出口"
       },
       {
@@ -307,7 +307,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://pan.889969.xyz/d/oracle/singbox/rule_set/talkatone_ip.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_ip.srs",
         "download_detour": "🌍 境外出口"
       },
       {
@@ -315,7 +315,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://pan.889969.xyz/d/oracle/singbox/rule_set/telegram_ip.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_ip.srs",
         "download_detour": "🌍 境外出口"
       },
       {
@@ -323,7 +323,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://pan.889969.xyz/d/oracle/singbox/rule_set/telegram_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_site.srs",
         "download_detour": "🌍 境外出口"
       },
       {
@@ -331,7 +331,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://pan.889969.xyz/d/oracle/singbox/rule_set/openai_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/openai_site.srs",
         "download_detour": "🌍 境外出口"
       },
       {
@@ -339,7 +339,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "3h",
-        "url": "https://pan.889969.xyz/d/oracle/singbox/rule_set/tiktok_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/tiktok_site.srs",
         "download_detour": "🌍 境外出口"
       }
     ]
