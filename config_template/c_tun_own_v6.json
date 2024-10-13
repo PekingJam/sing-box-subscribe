@@ -225,7 +225,7 @@
         "rule_set": [
           "private_site"
         ],
-        "outbound": "direct"
+        "outbound": "direct-out"
       },
       {
         "process_name": [
@@ -270,7 +270,7 @@
       },
       {
         "rule_set": "private_ip",
-        "outbound": "direct"
+        "outbound": "direct-out"
       },
       {
         "rule_set": [
