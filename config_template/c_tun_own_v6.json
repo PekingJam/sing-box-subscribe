@@ -7,7 +7,7 @@
     "clash_api": {
       "external_controller": "127.0.0.1:32581",
       "external_ui": "ui",
-      "secret": "",
+      "secret": "orange123.",
       "external_ui_download_url": "https://drive.dandaner.cn/d/sub/singbox/dashboard/yacd.zip",
       "external_ui_download_detour": "direct-out",
       "default_mode": "rule"
@@ -28,7 +28,7 @@
       {
         "tag": "tx",
         "address": "https://1.12.12.12/dns-query",
-        "detour": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
+        "detour": "direct-out"
       },
       {
         "tag": "block",
@@ -40,13 +40,6 @@
         "outbound": "any",
         "server": "tx",
         "disable_cache": true
-      },
-      {
-        "protocol": [
-          "quic",
-          "stun"
-        ],
-        "server": "block"
       },
       {
         "rule_set": "google_site",
@@ -202,8 +195,11 @@
     "final": "🌍 境外出口",
     "rules": [
       {
-        "port": 21114,
-        "outbound": "block"
+        "protocol": [
+          "quic",
+          "stun"
+        ],
+        "server": "block"
       },
       {
         "protocol": "dns",
