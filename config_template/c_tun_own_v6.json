@@ -266,7 +266,7 @@
       },
       {
         "ip_is_private": true,
-        "outbound": "direct"
+        "outbound": "direct-out"
       },
       {
         "rule_set": "private_ip",
