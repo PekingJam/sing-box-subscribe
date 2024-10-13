@@ -5,11 +5,11 @@
   },
   "experimental": {
     "clash_api": {
-      "external_controller": "127.0.0.1:9090",
+      "external_controller": "127.0.0.1:32580",
       "external_ui": "ui",
       "secret": "",
       "external_ui_download_url": "https://drive.dandaner.cn/d/sub/singbox/dashboard/yacd.zip",
-      "external_ui_download_detour": "🌍 境外出口",
+      "external_ui_download_detour": "direct-out",
       "default_mode": "rule"
     },
     "cache_file": {
@@ -28,7 +28,7 @@
       {
         "tag": "tx",
         "address": "https://1.12.12.12/dns-query",
-        "detour": "direct"
+        "detour": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
       },
       {
         "tag": "block",
@@ -42,8 +42,9 @@
         "disable_cache": true
       },
       {
-        "domain": [
-          "cloudapi.bytedance.net"
+        "protocol": [
+          "quic",
+          "stun"
         ],
         "server": "block"
       },
@@ -66,7 +67,7 @@
     ],
     "reverse_mapping": false,
     "final": "google",
-    "strategy": "ipv4_only",
+    "strategy": "prefer_ipv4",
     "independent_cache": true
   },
   "inbounds": [
@@ -77,7 +78,7 @@
         "172.18.0.1/30",
         "fdfe:dcba:9876::1/126"
       ],
-      "stack": "system",
+      "stack": "mixed",
       "strict_route": true,
       "auto_route": true,
       "sniff_override_destination": false,
@@ -87,7 +88,7 @@
       "tag": "mixed",
       "type": "mixed",
       "listen": "127.0.0.1",
-      "listen_port": 7890,
+      "listen_port": 32580,
       "sniff": true
     }
   ],
@@ -111,8 +112,7 @@
       "tag": "\uD83C\uDDE8\uD83C\uDDF3 境内出口",
       "type": "selector",
       "outbounds": [
-        "direct",
-        "\uD83C\uDF0D 境外出口",
+        "direct-out",
         "{all}"
       ],
       "filter": [
@@ -120,6 +120,21 @@
           "action": "include",
           "keywords": [
             "🇨🇳"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Ⓜ Google&Microsoft",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
           ]
         }
       ]
@@ -175,7 +190,7 @@
     },
     {
       "type": "direct",
-      "tag": "direct"
+      "tag": "direct-out"
     },
     {
       "type": "dns",
@@ -214,20 +229,28 @@
       },
       {
         "process_name": [
-          "aria2c.exe"
+          "QQ.exe",
+          "wetype_service.exe",
+          "wetype_update.exe",
+          "wetype_server.exe",
+          "WeChatAppEx.exe",
+          "WeChat.exe",
+          "WeChatOCR.exe",
+          "WeChatPlayer.exe",
+          "WeChatUtility.exe"
         ],
         "outbound": "\uD83E\uDD16 ChatGPT"
       },
       {
         "rule_set": [
-          "google_site"
+          "google_site",
+          "microsoft_site"
         ],
-        "outbound": "\uD83C\uDF0D 境外出口"
+        "outbound": "Ⓜ Google&Microsoft"
       },
       {
         "rule_set": [
-          "ai_site",
-          "talk_site"
+          "ai_site"
         ],
         "outbound": "🤖 ChatGPT"
       },
@@ -251,12 +274,6 @@
       },
       {
         "rule_set": [
-          "talk_ip"
-        ],
-        "outbound": "🤖 ChatGPT"
-      },
-      {
-        "rule_set": [
           "tele_ip"
         ],
         "outbound": "✈️ Telegram"
@@ -273,7 +290,7 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/cn_ip.srs",
-        "download_detour": "🌍 境外出口"
+        "download_detour": "direct-out"
       },
       {
         "tag": "cn_site",
@@ -281,7 +298,7 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/cn_site.srs",
-        "download_detour": "🌍 境外出口"
+        "download_detour": "direct-out"
       },
       {
         "tag": "private_ip",
@@ -289,7 +306,7 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/private_ip.srs",
-        "download_detour": "🌍 境外出口"
+        "download_detour": "direct-out"
       },
       {
         "tag": "private_site",
@@ -297,7 +314,7 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/private_site.srs",
-        "download_detour": "🌍 境外出口"
+        "download_detour": "direct-out"
       },
       {
         "tag": "google_site",
@@ -305,7 +322,7 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/google_site.srs",
-        "download_detour": "🌍 境外出口"
+        "download_detour": "direct-out"
       },
       {
         "tag": "talk_site",
@@ -313,7 +330,7 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_site.srs",
-        "download_detour": "🌍 境外出口"
+        "download_detour": "direct-out"
       },
       {
         "tag": "talk_ip",
@@ -321,7 +338,7 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_ip.srs",
-        "download_detour": "🌍 境外出口"
+        "download_detour": "direct-out"
       },
       {
         "tag": "tele_ip",
@@ -329,7 +346,7 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_ip.srs",
-        "download_detour": "🌍 境外出口"
+        "download_detour": "direct-out"
       },
       {
         "tag": "tele_site",
@@ -337,7 +354,7 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_site.srs",
-        "download_detour": "🌍 境外出口"
+        "download_detour": "direct-out"
       },
       {
         "tag": "ai_site",
@@ -345,7 +362,7 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/openai_site.srs",
-        "download_detour": "🌍 境外出口"
+        "download_detour": "direct-out"
       },
       {
         "tag": "tiktok_site",
@@ -353,7 +370,15 @@
         "format": "binary",
         "update_interval": "3h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/tiktok_site.srs",
-        "download_detour": "🌍 境外出口"
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "microsoft_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "3h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/microsoft_site.srs",
+        "download_detour": "direct-out"
       }
     ]
   }
