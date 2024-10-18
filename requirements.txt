@@ -5,5 +5,4 @@ scp
 chardet
 PyYAML
 ruamel.yaml
-gunicorn
 Flask==2.3.2
