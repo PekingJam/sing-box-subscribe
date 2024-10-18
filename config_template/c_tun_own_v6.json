@@ -135,7 +135,7 @@
       ]
     },
     {
-      "tag": "Ⓜ Google&Microsoft",
+      "tag": "🏷️ 谷歌&微软",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -259,7 +259,7 @@
           "google_site",
           "microsoft_site"
         ],
-        "outbound": "Ⓜ Google&Microsoft"
+        "outbound": "🏷️ 谷歌&微软"
       },
       {
         "rule_set": [
