@@ -51,21 +51,23 @@
         "disable_cache": true
       },
       {
-        "rule_set": ["google_site", "ncn_site"],
-        "query_type": ["A", "AAAA"],
-        "server": "fakeip"
-      },
-      {
-        "rule_set": "cn_site",
-        "server": "tx"
-      },
-      {
         "clash_mode": "direct",
         "server": "tx"
       },
       {
         "clash_mode": "global",
         "server": "google"
+      },
+      {
+        "rule_set": "cn_site",
+        "server": "tx"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip"
       }
     ],
     "fakeip": {
