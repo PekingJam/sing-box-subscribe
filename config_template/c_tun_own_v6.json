@@ -5,9 +5,9 @@
   },
   "experimental": {
     "clash_api": {
-      "external_controller": "127.0.0.1:32581",
+      "external_controller": "127.0.0.1:32590",
       "external_ui": "ui",
-      "secret": "orange123.",
+      "secret": "orange123",
       "external_ui_download_url": "https://drive.dandaner.cn/d/sub/singbox/dashboard/yacd.zip",
       "external_ui_download_detour": "direct-out",
       "default_mode": "rule"
@@ -21,14 +21,23 @@
     "servers": [
       {
         "tag": "google",
-        "address": "https://8.8.8.8/dns-query",
-        "detour": "\uD83C\uDF0D 境外出口",
-        "client_subnet": "118.142.33.22"
+        "address": "tls://1.1.1.1",
+        "detour": "🌍 境外出口"
       },
       {
         "tag": "tx",
-        "address": "https://1.12.12.12/dns-query",
+        "address": "tls://266520.alidns.com",
+        "address_resolver": "ali-udp",
         "detour": "direct-out"
+      },
+      {
+        "tag": "ali-udp",
+        "address": "223.5.5.5",
+        "detour": "direct-out"
+      },
+      {
+        "tag": "fakeip",
+        "address": "fakeip"
       },
       {
         "tag": "block",
@@ -42,8 +51,9 @@
         "disable_cache": true
       },
       {
-        "rule_set": "google_site",
-        "server": "google"
+        "rule_set": ["google_site", "ncn_site"],
+        "query_type": ["A", "AAAA"],
+        "server": "fakeip"
       },
       {
         "rule_set": "cn_site",
@@ -58,9 +68,14 @@
         "server": "google"
       }
     ],
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    },
+    "strategy": "prefer_ipv4",
     "reverse_mapping": false,
     "final": "google",
-    "strategy": "prefer_ipv4",
     "independent_cache": true
   },
   "inbounds": [
@@ -235,7 +250,7 @@
           "WeChatPlayer.exe",
           "WeChatUtility.exe"
         ],
-        "outbound": "\uD83E\uDD16 ChatGPT"
+        "outbound": "direct-out"
       },
       {
         "rule_set": [
@@ -243,6 +258,12 @@
           "microsoft_site"
         ],
         "outbound": "Ⓜ Google&Microsoft"
+      },
+      {
+        "rule_set": [
+          "ncn_site"
+        ],
+        "outbound": "\uD83C\uDF0D 境外出口"
       },
       {
         "rule_set": [
@@ -284,7 +305,7 @@
         "tag": "cn_ip",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/cn_ip.srs",
         "download_detour": "direct-out"
       },
@@ -292,7 +313,7 @@
         "tag": "cn_site",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/cn_site.srs",
         "download_detour": "direct-out"
       },
@@ -300,7 +321,7 @@
         "tag": "private_ip",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/private_ip.srs",
         "download_detour": "direct-out"
       },
@@ -308,7 +329,7 @@
         "tag": "private_site",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/private_site.srs",
         "download_detour": "direct-out"
       },
@@ -316,7 +337,7 @@
         "tag": "google_site",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/google_site.srs",
         "download_detour": "direct-out"
       },
@@ -324,7 +345,7 @@
         "tag": "talk_site",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_site.srs",
         "download_detour": "direct-out"
       },
@@ -332,7 +353,7 @@
         "tag": "talk_ip",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_ip.srs",
         "download_detour": "direct-out"
       },
@@ -340,7 +361,7 @@
         "tag": "tele_ip",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_ip.srs",
         "download_detour": "direct-out"
       },
@@ -348,7 +369,7 @@
         "tag": "tele_site",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_site.srs",
         "download_detour": "direct-out"
       },
@@ -356,7 +377,7 @@
         "tag": "ai_site",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/openai_site.srs",
         "download_detour": "direct-out"
       },
@@ -364,7 +385,7 @@
         "tag": "tiktok_site",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/tiktok_site.srs",
         "download_detour": "direct-out"
       },
@@ -372,8 +393,16 @@
         "tag": "microsoft_site",
         "type": "remote",
         "format": "binary",
-        "update_interval": "3h",
+        "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/microsoft_site.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "ncn_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/geolocation-!cn.srs",
         "download_detour": "direct-out"
       }
     ]
