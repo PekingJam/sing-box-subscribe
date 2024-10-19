@@ -26,8 +26,7 @@
       },
       {
         "tag": "tx",
-        "address": "tls://266520.alidns.com",
-        "address_resolver": "ali-udp",
+        "address": "tls://223.5.5.5",
         "detour": "direct-out"
       },
       {
