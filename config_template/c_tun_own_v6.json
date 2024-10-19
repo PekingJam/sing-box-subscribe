@@ -261,12 +261,6 @@
       },
       {
         "rule_set": [
-          "ncn_site"
-        ],
-        "outbound": "\uD83C\uDF0D 境外出口"
-      },
-      {
-        "rule_set": [
           "ai_site"
         ],
         "outbound": "🤖 ChatGPT"
@@ -276,6 +270,12 @@
           "tele_site"
         ],
         "outbound": "✈️ Telegram"
+      },
+      {
+        "rule_set": [
+          "ncn_site"
+        ],
+        "outbound": "\uD83C\uDF0D 境外出口"
       },
       {
         "rule_set": "cn_site",
