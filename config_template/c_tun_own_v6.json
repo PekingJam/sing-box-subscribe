@@ -58,10 +58,6 @@
         "server": "google"
       },
       {
-        "rule_set": "cn_site",
-        "server": "tx"
-      },
-      {
         "query_type": [
           "A",
           "AAAA"
