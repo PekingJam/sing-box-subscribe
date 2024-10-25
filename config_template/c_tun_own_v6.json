@@ -26,7 +26,7 @@
       },
       {
         "tag": "tx",
-        "address": "tls://223.5.5.5",
+        "address": "dhcp://auto",
         "detour": "direct-out"
       },
       {
