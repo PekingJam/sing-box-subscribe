@@ -54,14 +54,14 @@
       },
       {
         "rule_set": [
-          "cn_site"
+          "ncn_site"
         ],
-        "server": "tx"
+        "server": "google"
       }
     ],
     "strategy": "ipv4_only",
     "reverse_mapping": false,
-    "final": "google",
+    "final": "tx",
     "independent_cache": true
   },
   "inbounds": [
