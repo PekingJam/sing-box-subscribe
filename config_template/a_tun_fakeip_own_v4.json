@@ -13,8 +13,7 @@
       "default_mode": "rule"
     },
     "cache_file": {
-      "enabled": true,
-      "store_fakeip": true
+      "enabled": true
     }
   },
   "dns": {
@@ -33,10 +32,6 @@
         "tag": "ali-udp",
         "address": "223.5.5.5",
         "detour": "direct-out"
-      },
-      {
-        "tag": "fakeip",
-        "address": "fakeip"
       },
       {
         "tag": "block",
