@@ -8,7 +8,7 @@
       "external_controller": "127.0.0.1:32590",
       "external_ui": "ui",
       "secret": "orange123",
-      "external_ui_download_url": "http://oss-sso.test.upcdn.net/d/sub/singbox/dashboard/dashboard.zip",
+      "external_ui_download_url": "https://drive.dandaner.cn/d/sub/singbox/dashboard/dashboard.zip",
       "external_ui_download_detour": "direct-out",
       "default_mode": "rule"
     },
@@ -58,19 +58,14 @@
         "server": "google"
       },
       {
-        "query_type": [
-          "A",
-          "AAAA"
+        "rule_set": [
+          "cn_site",
+          "private_site"
         ],
-        "server": "fakeip"
+        "server": "tx"
       }
     ],
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "reverse_mapping": false,
     "final": "google",
     "independent_cache": true
@@ -80,8 +75,7 @@
       "type": "tun",
       "interface_name": "tnu6",
       "address": [
-        "172.18.0.1/30",
-        "fdfe:dcba:9876::1/126"
+        "172.18.0.1/30"
       ],
       "stack": "system",
       "strict_route": true,
@@ -303,7 +297,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/cn_ip.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/cn_ip.srs",
         "download_detour": "direct-out"
       },
       {
@@ -311,7 +305,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/cn_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/cn_site.srs",
         "download_detour": "direct-out"
       },
       {
@@ -319,7 +313,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/private_ip.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/private_ip.srs",
         "download_detour": "direct-out"
       },
       {
@@ -327,7 +321,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/private_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/private_site.srs",
         "download_detour": "direct-out"
       },
       {
@@ -335,7 +329,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/google_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/google_site.srs",
         "download_detour": "direct-out"
       },
       {
@@ -343,7 +337,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/talkatone_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_site.srs",
         "download_detour": "direct-out"
       },
       {
@@ -351,7 +345,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/talkatone_ip.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/talkatone_ip.srs",
         "download_detour": "direct-out"
       },
       {
@@ -359,7 +353,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/telegram_ip.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_ip.srs",
         "download_detour": "direct-out"
       },
       {
@@ -367,7 +361,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/telegram_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/telegram_site.srs",
         "download_detour": "direct-out"
       },
       {
@@ -375,7 +369,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/openai_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/openai_site.srs",
         "download_detour": "direct-out"
       },
       {
@@ -383,7 +377,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/tiktok_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/tiktok_site.srs",
         "download_detour": "direct-out"
       },
       {
@@ -391,7 +385,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/microsoft_site.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/microsoft_site.srs",
         "download_detour": "direct-out"
       },
       {
@@ -399,7 +393,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "http://oss-sso.test.upcdn.net/d/sub/singbox/rule_set/geolocation-!cn.srs",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/geolocation-!cn.srs",
         "download_detour": "direct-out"
       }
     ]
