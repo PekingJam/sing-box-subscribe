@@ -13,8 +13,7 @@
       "default_mode": "rule"
     },
     "cache_file": {
-      "enabled": true,
-      "store_fakeip": true
+      "enabled": true
     }
   },
   "dns": {
@@ -26,17 +25,8 @@
       },
       {
         "tag": "tx",
-        "address": "tls://120.53.53.53",
+        "address": "119.29.29.29",
         "detour": "direct-out"
-      },
-      {
-        "tag": "ali-udp",
-        "address": "223.5.5.5",
-        "detour": "direct-out"
-      },
-      {
-        "tag": "fakeip",
-        "address": "fakeip"
       },
       {
         "tag": "block",
@@ -58,19 +48,16 @@
         "server": "google"
       },
       {
-        "query_type": [
-          "A",
-          "AAAA"
+        "domain": [
+          "drive.dandaner.cn"
         ],
-        "server": "fakeip"
+        "rule_set": [
+          "cn_site"
+        ],
+        "server": "tx"
       }
     ],
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "reverse_mapping": false,
     "final": "google",
     "independent_cache": true
@@ -80,14 +67,39 @@
       "type": "tun",
       "interface_name": "tnu6",
       "address": [
-        "172.18.0.1/30",
-        "fdfe:dcba:9876::1/126"
+        "172.18.0.1/30"
       ],
       "stack": "system",
       "strict_route": true,
       "auto_route": true,
       "sniff_override_destination": false,
-      "sniff": true
+      "sniff": true,
+      "exclude_package": [
+        "com.fenqile.fenqile",
+        "com.sankuai.meituan.dispatch.crowdsource",
+        "com.android.bankabc",
+        "com.tmri.app.main",
+        "com.sinovatech.unicom.ui",
+        "com.tencent.androidqqmail",
+        "me.ele.crowdsource",
+        "com.MobileTicket",
+        "me.ele",
+        "com.tencent.mm",
+        "com.sankuai.meituan.takeoutnew",
+        "cn.gov.pbc.dcep",
+        "com.xunmeng.pinduoduo",
+        "com.tencent.wetype",
+        "com.tencent.mobileqq",
+        "com.jd.jrapp",
+        "com.jingdong.app.mall",
+        "com.carriez.flutter_hbb",
+        "com.autonavi.minimap",
+        "com.taobao.idlefish",
+        "com.taobao.taobao",
+        "com.cmbchina.ccd.pluto.cmbActivity",
+        "com.duxiaoman.wallet",
+        "com.eg.android.AlipayGphone"
+      ]
     },
     {
       "tag": "mixed",
