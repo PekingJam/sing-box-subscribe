@@ -248,20 +248,6 @@
         "outbound": "direct-out"
       },
       {
-        "process_name": [
-          "QQ.exe",
-          "wetype_service.exe",
-          "wetype_update.exe",
-          "wetype_server.exe",
-          "WeChatAppEx.exe",
-          "WeChat.exe",
-          "WeChatOCR.exe",
-          "WeChatPlayer.exe",
-          "WeChatUtility.exe"
-        ],
-        "outbound": "direct-out"
-      },
-      {
         "rule_set": [
           "google_site",
           "microsoft_site"

@@ -229,7 +229,8 @@
           "WeChat.exe",
           "WeChatOCR.exe",
           "WeChatPlayer.exe",
-          "WeChatUtility.exe"
+          "WeChatUtility.exe",
+          "RustDesk.exe"
         ],
         "outbound": "direct-out"
       },
