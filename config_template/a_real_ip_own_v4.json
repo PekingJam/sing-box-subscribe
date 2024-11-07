@@ -41,6 +41,12 @@
         "server": "tx"
       },
       {
+        "action": "reject",
+        "rule_set": [
+          "anti-dns-ad"
+        ]
+      },
+      {
         "clash_mode": "global",
         "server": "google"
       },
@@ -381,6 +387,14 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/geolocation-!cn.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "anti-dns-ad",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/anti-dns-ad.srs",
         "download_detour": "direct-out"
       }
     ]
