@@ -1,7 +1,7 @@
 {
   "log": {
     "level": "warn",
-    "timestamp": true
+    "timestamp": false
   },
   "experimental": {
     "clash_api": {
