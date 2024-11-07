@@ -27,14 +27,11 @@
         "tag": "tx",
         "address": "119.29.29.29",
         "detour": "direct-out"
-      },
-      {
-        "tag": "block",
-        "address": "rcode://success"
       }
     ],
     "rules": [
       {
+        "action": "route-options",
         "outbound": "any",
         "server": "tx",
         "disable_cache": true
@@ -64,6 +61,7 @@
   },
   "inbounds": [
     {
+      "tag": "tun_in",
       "type": "tun",
       "interface_name": "tnu6",
       "address": [
@@ -71,43 +69,13 @@
       ],
       "stack": "system",
       "strict_route": true,
-      "auto_route": true,
-      "sniff_override_destination": false,
-      "sniff": true,
-      "exclude_package": [
-        "com.fenqile.fenqile",
-        "com.sankuai.meituan.dispatch.crowdsource",
-        "com.android.bankabc",
-        "com.tmri.app.main",
-        "com.sinovatech.unicom.ui",
-        "com.tencent.androidqqmail",
-        "me.ele.crowdsource",
-        "com.MobileTicket",
-        "me.ele",
-        "com.tencent.mm",
-        "com.sankuai.meituan.takeoutnew",
-        "cn.gov.pbc.dcep",
-        "com.xunmeng.pinduoduo",
-        "com.tencent.wetype",
-        "com.tencent.mobileqq",
-        "com.jd.jrapp",
-        "com.jingdong.app.mall",
-        "com.carriez.flutter_hbb",
-        "com.autonavi.minimap",
-        "com.taobao.idlefish",
-        "com.taobao.taobao",
-        "com.cmbchina.ccd.pluto.cmbActivity",
-        "com.duxiaoman.umoney",
-        "com.eg.android.AlipayGphone",
-        "com.ct.client"
-      ]
+      "auto_route": true
     },
     {
-      "tag": "mixed",
+      "tag": "mixed_in",
       "type": "mixed",
       "listen": "127.0.0.1",
-      "listen_port": 32580,
-      "sniff": true
+      "listen_port": 32580
     }
   ],
   "outbounds": [
@@ -180,9 +148,9 @@
       ],
       "filter": [
         {
-          "action": "exclude",
+          "action": "include",
           "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+            "▪"
           ]
         }
       ]
@@ -203,16 +171,8 @@
       ]
     },
     {
-      "type": "block",
-      "tag": "block"
-    },
-    {
       "type": "direct",
       "tag": "direct-out"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
     }
   ],
   "route": {
@@ -220,19 +180,26 @@
     "final": "🌍 境外出口",
     "rules": [
       {
+        "inbound": [
+          "tun_in",
+          "mixed_in"
+        ],
+        "action": "sniff"
+      },
+      {
         "protocol": [
           "quic",
           "stun"
         ],
-        "outbound": "block"
+        "action": "reject"
       },
       {
         "protocol": "dns",
-        "outbound": "dns-out"
+        "action": "hijack-dns"
       },
       {
         "port": 53,
-        "outbound": "dns-out"
+        "action": "hijack-dns"
       },
       {
         "clash_mode": "direct",
@@ -245,6 +212,21 @@
       {
         "rule_set": [
           "private_site"
+        ],
+        "outbound": "direct-out"
+      },
+      {
+        "process_name": [
+          "QQ.exe",
+          "wetype_service.exe",
+          "wetype_update.exe",
+          "wetype_server.exe",
+          "WeChatAppEx.exe",
+          "WeChat.exe",
+          "WeChatOCR.exe",
+          "WeChatPlayer.exe",
+          "WeChatUtility.exe",
+          "RustDesk.exe"
         ],
         "outbound": "direct-out"
       },

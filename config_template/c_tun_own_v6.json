@@ -1,6 +1,6 @@
 {
   "log": {
-    "level": "warn",
+    "level": "info",
     "timestamp": true
   },
   "experimental": {
@@ -37,14 +37,11 @@
       {
         "tag": "fakeip",
         "address": "fakeip"
-      },
-      {
-        "tag": "block",
-        "address": "rcode://success"
       }
     ],
     "rules": [
       {
+        "action": "route-options",
         "outbound": "any",
         "server": "tx",
         "disable_cache": true
@@ -77,24 +74,21 @@
   },
   "inbounds": [
     {
+      "tag": "tun_in",
       "type": "tun",
       "interface_name": "tnu6",
       "address": [
-        "172.18.0.1/30",
-        "fdfe:dcba:9876::1/126"
+        "172.18.0.1/30"
       ],
       "stack": "system",
       "strict_route": true,
-      "auto_route": true,
-      "sniff_override_destination": false,
-      "sniff": true
+      "auto_route": true
     },
     {
-      "tag": "mixed",
+      "tag": "mixed_in",
       "type": "mixed",
       "listen": "127.0.0.1",
-      "listen_port": 32580,
-      "sniff": true
+      "listen_port": 32580
     }
   ],
   "outbounds": [
@@ -167,9 +161,9 @@
       ],
       "filter": [
         {
-          "action": "exclude",
+          "action": "include",
           "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+            "▪"
           ]
         }
       ]
@@ -190,16 +184,8 @@
       ]
     },
     {
-      "type": "block",
-      "tag": "block"
-    },
-    {
       "type": "direct",
       "tag": "direct-out"
-    },
-    {
-      "type": "dns",
-      "tag": "dns-out"
     }
   ],
   "route": {
@@ -207,19 +193,26 @@
     "final": "🌍 境外出口",
     "rules": [
       {
+        "inbound": [
+          "tun_in",
+          "mixed_in"
+        ],
+        "action": "sniff"
+      },
+      {
         "protocol": [
           "quic",
           "stun"
         ],
-        "outbound": "block"
+        "action": "reject"
       },
       {
         "protocol": "dns",
-        "outbound": "dns-out"
+        "action": "hijack-dns"
       },
       {
         "port": 53,
-        "outbound": "dns-out"
+        "action": "hijack-dns"
       },
       {
         "clash_mode": "direct",
@@ -245,7 +238,8 @@
           "WeChat.exe",
           "WeChatOCR.exe",
           "WeChatPlayer.exe",
-          "WeChatUtility.exe"
+          "WeChatUtility.exe",
+          "RustDesk.exe"
         ],
         "outbound": "direct-out"
       },
