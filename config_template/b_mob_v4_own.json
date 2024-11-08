@@ -102,7 +102,9 @@
         "com.cmbchina.ccd.pluto.cmbActivity",
         "com.duxiaoman.umoney",
         "com.eg.android.AlipayGphone",
-        "com.ct.client"
+        "com.ct.client",
+        "org.telegram.messenger",
+        "xyz.nextalone.nnngram"
       ]
     },
     {
