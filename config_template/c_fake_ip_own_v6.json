@@ -74,9 +74,9 @@
       "inet6_range": "fc00::/18"
     },
     "strategy": "prefer_ipv4",
-    "reverse_mapping": false,
+    "reverse_mapping": true,
     "final": "google",
-    "independent_cache": true
+    "independent_cache": false
   },
   "inbounds": [
     {

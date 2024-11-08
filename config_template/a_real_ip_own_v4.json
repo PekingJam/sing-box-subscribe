@@ -61,9 +61,9 @@
       }
     ],
     "strategy": "ipv4_only",
-    "reverse_mapping": false,
+    "reverse_mapping": true,
     "final": "google",
-    "independent_cache": true
+    "independent_cache": false
   },
   "inbounds": [
     {
