@@ -245,8 +245,7 @@
           "WeChatOCR.exe",
           "WeChatPlayer.exe",
           "WeChatUtility.exe",
-          "RustDesk.exe",
-          "Telegram.exe"
+          "RustDesk.exe"
         ],
         "outbound": "direct-out"
       },
