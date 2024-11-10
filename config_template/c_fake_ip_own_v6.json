@@ -21,34 +21,31 @@
     "servers": [
       {
         "tag": "google",
-        "address": "tls://1.1.1.1",
+        "address": "tls://8.8.8.8",
         "detour": "🌍 境外出口"
       },
       {
-        "tag": "tx",
-        "address": "tls://120.53.53.53",
+        "tag": "ali-dot",
+        "address": "tls://266520.alidns.com",
+        "address_resolver": "ali-udp",
         "detour": "direct-out"
       },
       {
         "tag": "ali-udp",
         "address": "223.5.5.5",
         "detour": "direct-out"
-      },
-      {
-        "tag": "fakeip",
-        "address": "fakeip"
       }
     ],
     "rules": [
       {
         "action": "route-options",
         "outbound": "any",
-        "server": "tx",
+        "server": "ali-dot",
         "disable_cache": true
       },
       {
         "clash_mode": "direct",
-        "server": "tx"
+        "server": "ali-dot"
       },
       {
         "clash_mode": "global",
