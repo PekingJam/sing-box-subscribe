@@ -26,7 +26,7 @@
       },
       {
         "tag": "ali-dot",
-        "address": "tls://266520.alidns.com",
+        "address": "119.29.29.29",
         "address_resolver": "ali-udp",
         "detour": "direct-out"
       },
