@@ -16,22 +16,21 @@
       "enabled": true
     }
   },
-  "dns": {
-    "servers": [
+  "servers": [
       {
         "tag": "google",
         "address": "tls://8.8.8.8",
         "detour": "🌍 境外出口"
       },
       {
-        "tag": "ali-dot",
-        "address": "119.29.29.29",
+        "tag": "tx-dot",
+        "address": "tls://dot.pub",
         "address_resolver": "ali-udp",
         "detour": "direct-out"
       },
       {
-        "tag": "ali-udp",
-        "address": "223.5.5.5",
+        "tag": "tx-udp",
+        "address": "119.29.29.29",
         "detour": "direct-out"
       }
     ],
@@ -39,12 +38,12 @@
       {
         "action": "route-options",
         "outbound": "any",
-        "server": "ali-dot",
+        "server": "tx-dot",
         "disable_cache": true
       },
       {
         "clash_mode": "direct",
-        "server": "ali-dot"
+        "server": "tx-dot"
       },
       {
         "clash_mode": "global",
@@ -57,7 +56,7 @@
         "rule_set": [
           "cn_site"
         ],
-        "server": "ali-dot"
+        "server": "tx-dot"
       }
     ],
     "strategy": "ipv4_only",
