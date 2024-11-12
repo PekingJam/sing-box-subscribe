@@ -25,7 +25,7 @@
       {
         "tag": "tx-dot",
         "address": "tls://dot.pub",
-        "address_resolver": "ali-udp",
+        "address_resolver": "tx-udp",
         "detour": "direct-out"
       },
       {
