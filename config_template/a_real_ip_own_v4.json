@@ -19,8 +19,8 @@
   "dns": {
     "servers": [
       {
-        "tag": "google",
-        "address": "tls://8.8.8.8",
+        "tag": "cloudflare",
+        "address": "tls://1.1.1.1",
         "detour": "🌍 境外出口"
       },
       {
@@ -48,7 +48,7 @@
       },
       {
         "clash_mode": "global",
-        "server": "google"
+        "server": "cloudflare"
       },
       {
         "domain": [
@@ -62,7 +62,7 @@
     ],
     "strategy": "ipv4_only",
     "reverse_mapping": true,
-    "final": "google",
+    "final": "cloudflare",
     "independent_cache": false
   },
   "inbounds": [
