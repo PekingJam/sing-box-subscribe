@@ -245,6 +245,11 @@
         "outbound": "🏷️ 谷歌&微软"
       },
       {
+        "domain":[
+          "stream1.misakaf.org",
+          "stream2.misakaf.org",
+          "stream3.misakaf.org"
+        ],
         "rule_set": [
           "ai_site"
         ],
