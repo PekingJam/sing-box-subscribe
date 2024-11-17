@@ -250,6 +250,9 @@
           "stream2.misakaf.org",
           "stream3.misakaf.org"
         ],
+        "process_name": [
+          "aria2c.exe"
+        ],
         "rule_set": [
           "ai_site"
         ],
