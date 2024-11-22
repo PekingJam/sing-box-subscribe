@@ -35,12 +35,9 @@
         "detour": "direct-out"
       },
       {
-        "rule_set": [
-          "ai_site",
-          "disney_site",
-          "netflix_site"
-        ],
-        "server": "alice-sg"
+        "tag": "alice-sg",
+        "address": "157.20.104.47",
+        "detour": "\uD83C\uDF0D 境外出口"
       }
     ],
     "rules": [
