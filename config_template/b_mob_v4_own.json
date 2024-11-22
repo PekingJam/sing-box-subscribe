@@ -33,6 +33,14 @@
         "tag": "tx-udp",
         "address": "119.29.29.29",
         "detour": "direct-out"
+      },
+      {
+        "rule_set": [
+          "ai_site",
+          "disney_site",
+          "netflix_site"
+        ],
+        "server": "alice-sg"
       }
     ],
     "rules": [
@@ -58,6 +66,14 @@
           "cn_site"
         ],
         "server": "tx-dot"
+      },
+      {
+        "rule_set": [
+          "ai_site",
+          "disney_site",
+          "netflix_site"
+        ],
+        "server": "alice-sg"
       }
     ],
     "strategy": "ipv4_only",
@@ -399,6 +415,22 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/microsoft_site.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "netflix_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/netflix.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "disney_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/disney_site.srs",
         "download_detour": "direct-out"
       },
       {
