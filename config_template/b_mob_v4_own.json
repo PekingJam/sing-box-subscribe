@@ -277,9 +277,6 @@
           "stream2.misakaf.org",
           "stream3.misakaf.org"
         ],
-        "rule_set": [
-          "ai_site"
-        ],
         "outbound": "🤖 ChatGPT"
       },
       {
