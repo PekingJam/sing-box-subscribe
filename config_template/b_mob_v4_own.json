@@ -160,21 +160,6 @@
       ]
     },
     {
-      "tag": "🏷️ 谷歌&微软",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "exclude",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
       "tag": "✈️ Telegram",
       "type": "selector",
       "outbounds": [
@@ -190,7 +175,7 @@
       ]
     },
     {
-      "tag": "🤖 ChatGPT",
+      "tag": "⏬ 大量下载",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -265,19 +250,12 @@
         "outbound": "direct-out"
       },
       {
-        "rule_set": [
-          "google_site",
-          "microsoft_site"
-        ],
-        "outbound": "🏷️ 谷歌&微软"
-      },
-      {
         "domain":[
           "stream1.misakaf.org",
           "stream2.misakaf.org",
           "stream3.misakaf.org"
         ],
-        "outbound": "🤖 ChatGPT"
+        "outbound": "⏬ 大量下载"
       },
       {
         "rule_set": [
@@ -287,6 +265,8 @@
       },
       {
         "rule_set": [
+          "google_site",
+          "microsoft_site",
           "ncn_site"
         ],
         "outbound": "\uD83C\uDF0D 境外出口"
