@@ -182,7 +182,7 @@
       ],
       "filter": [
         {
-          "action": "include",
+          "action": "exclude",
           "keywords": [
             "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
           ]
