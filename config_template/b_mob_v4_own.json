@@ -67,7 +67,6 @@
       {
         "rule_set": [
           "ai_site",
-          "gemini_site",
           "disney_site",
           "netflix_site"
         ],
@@ -176,6 +175,21 @@
       ]
     },
     {
+      "tag": "🤖 AI",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2|🇭🇰"
+          ]
+        }
+      ]
+    },
+    {
       "tag": "⏬ 大量下载",
       "type": "selector",
       "outbounds": [
@@ -267,6 +281,12 @@
           "tele_site"
         ],
         "outbound": "✈️ Telegram"
+      },
+      {
+        "rule_set": [
+          "gemini_site"
+        ],
+        "outbound": "\uD83E\uDD16 AI"
       },
       {
         "rule_set": [
