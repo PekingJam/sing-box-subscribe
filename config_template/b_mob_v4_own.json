@@ -67,6 +67,7 @@
       {
         "rule_set": [
           "ai_site",
+          "gemini_site",
           "disney_site",
           "netflix_site"
         ],
@@ -409,6 +410,14 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/disney_site.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "gemini_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/google-gemini_site.srs",
         "download_detour": "direct-out"
       },
       {
