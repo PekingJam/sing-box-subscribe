@@ -240,13 +240,16 @@
         "outbound": "direct-out"
       },
       {
+        "process_name": [
+          "aria2c.exe"
+        ],
+        "outbound": "⏬ 大量下载"
+      },
+      {
         "domain":[
           "stream1.misakaf.org",
           "stream2.misakaf.org",
           "stream3.misakaf.org"
-        ],
-        "process_name": [
-          "aria2c.exe"
         ],
         "outbound": "⏬ 大量下载"
       },
