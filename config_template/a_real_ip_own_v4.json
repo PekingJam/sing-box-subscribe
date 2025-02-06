@@ -202,13 +202,6 @@
         "action": "sniff"
       },
       {
-        "protocol": [
-          "quic",
-          "stun"
-        ],
-        "action": "reject"
-      },
-      {
         "protocol": "dns",
         "action": "hijack-dns"
       },

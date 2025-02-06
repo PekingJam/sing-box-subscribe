@@ -88,36 +88,7 @@
       ],
       "stack": "system",
       "strict_route": true,
-      "auto_route": true,
-      "exclude_package": [
-        "com.fenqile.fenqile",
-        "com.sankuai.meituan.dispatch.crowdsource",
-        "com.android.bankabc",
-        "com.tmri.app.main",
-        "com.sinovatech.unicom.ui",
-        "com.tencent.androidqqmail",
-        "me.ele.crowdsource",
-        "com.MobileTicket",
-        "me.ele",
-        "com.tencent.mm",
-        "com.sankuai.meituan.takeoutnew",
-        "cn.gov.pbc.dcep",
-        "com.xunmeng.pinduoduo",
-        "com.tencent.wetype",
-        "com.tencent.mobileqq",
-        "com.jd.jrapp",
-        "com.jingdong.app.mall",
-        "com.carriez.flutter_hbb",
-        "com.autonavi.minimap",
-        "com.taobao.idlefish",
-        "com.taobao.taobao",
-        "com.cmbchina.ccd.pluto.cmbActivity",
-        "com.duxiaoman.umoney",
-        "com.eg.android.AlipayGphone",
-        "com.ct.client",
-        "org.telegram.messenger",
-        "xyz.nextalone.nnngram"
-      ]
+      "auto_route": true
     },
     {
       "tag": "mixed_in",
@@ -233,13 +204,6 @@
           "mixed_in"
         ],
         "action": "sniff"
-      },
-      {
-        "protocol": [
-          "quic",
-          "stun"
-        ],
-        "action": "reject"
       },
       {
         "protocol": "dns",
