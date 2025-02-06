@@ -20,36 +20,27 @@
     "servers": [
       {
         "tag": "cloudflare",
-        "address": "tls://1.1.1.1",
+        "type": "tls",
+        "server": "1.1.1.1",
         "detour": "🌍 境外出口"
       },
       {
-        "tag": "tx-dot",
-        "address": "tls://dot.pub",
-        "address_resolver": "tx-udp",
-        "detour": "direct-out"
+        "tag": "alice-sg",
+        "type": "udp",
+        "server": "157.20.104.47",
+        "detour": "\uD83C\uDF0D 境外出口"
       },
       {
         "tag": "tx-udp",
-        "address": "119.29.29.29",
+        "type": "udp",
+        "server": "119.29.29.29",
         "detour": "direct-out"
-      },
-      {
-        "tag": "alice-sg",
-        "address": "157.20.104.47",
-        "detour": "\uD83C\uDF0D 境外出口"
       }
     ],
     "rules": [
       {
-        "action": "route-options",
-        "outbound": "any",
-        "server": "tx-dot",
-        "disable_cache": true
-      },
-      {
         "clash_mode": "direct",
-        "server": "tx-dot"
+        "server": "tx-udp"
       },
       {
         "clash_mode": "global",
@@ -62,7 +53,7 @@
         "rule_set": [
           "cn_site"
         ],
-        "server": "tx-dot"
+        "server": "tx-udp"
       },
       {
         "rule_set": [
@@ -197,6 +188,11 @@
   "route": {
     "auto_detect_interface": true,
     "final": "🌍 境外出口",
+    "default_domain_resolver": {
+      "server": "tx-udp",
+      "rewrite_tll": 60,
+      "client_subnet": "1.1.1.1"
+    },
     "rules": [
       {
         "inbound": [
@@ -365,6 +361,14 @@
         "download_detour": "direct-out"
       },
       {
+        "tag": "gemini_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/google-gemini_site.srs",
+        "download_detour": "direct-out"
+      },
+      {
         "tag": "tiktok_site",
         "type": "remote",
         "format": "binary",
@@ -394,14 +398,6 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/disney_site.srs",
-        "download_detour": "direct-out"
-      },
-      {
-        "tag": "gemini_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "6h",
-        "url": "https://drive.dandaner.cn/d/sub/singbox/rule_set/google-gemini_site.srs",
         "download_detour": "direct-out"
       },
       {
