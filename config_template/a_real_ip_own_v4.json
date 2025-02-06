@@ -233,11 +233,6 @@
           "wetype_service.exe",
           "wetype_update.exe",
           "wetype_server.exe",
-          "WeChatAppEx.exe",
-          "WeChat.exe",
-          "WeChatOCR.exe",
-          "WeChatPlayer.exe",
-          "WeChatUtility.exe",
           "RustDesk.exe"
         ],
         "outbound": "direct-out"
