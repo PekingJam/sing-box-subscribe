@@ -85,7 +85,7 @@
       "tag": "mixed_in",
       "type": "mixed",
       "listen": "127.0.0.1",
-      "listen_port": 32580
+      "listen_port": 32550
     }
   ],
   "outbounds": [
