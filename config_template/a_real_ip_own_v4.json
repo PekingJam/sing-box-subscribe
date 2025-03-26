@@ -34,7 +34,7 @@
         "tag": "tx-udp",
         "type": "udp",
         "server": "119.29.29.29",
-        "detour": "direct-out"
+        "detour": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
       }
     ],
     "rules": [
