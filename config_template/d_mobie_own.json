@@ -1,0 +1,407 @@
+{
+    "log": {
+        "level": "warn",
+        "timestamp": false
+    },
+    "experimental": {
+        "clash_api": {
+            "external_controller": "127.0.0.1:32590",
+            "external_ui": "ui",
+            "secret": "orange123",
+            "external_ui_download_url": "https://oss.dandaner.cn/download/webui/dashboard.zip",
+            "external_ui_download_detour": "direct-out",
+            "default_mode": "rule"
+        },
+        "cache_file": {
+            "enabled": true
+        }
+    },
+    "dns": {
+        "servers": [
+            {
+                "tag": "cloudflare",
+                "type": "tls",
+                "server": "1.1.1.1",
+                "detour": "🌍 境外出口"
+            },
+            {
+                "tag": "alice-sg",
+                "type": "udp",
+                "server": "157.20.104.47",
+                "detour": "\uD83C\uDF0D 境外出口"
+            },
+            {
+                "tag": "tx-udp",
+                "type": "udp",
+                "server": "119.29.29.29",
+                "detour": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
+            }
+        ],
+        "rules": [
+            {
+                "clash_mode": "direct",
+                "server": "tx-udp"
+            },
+            {
+                "clash_mode": "global",
+                "server": "cloudflare"
+            },
+            {
+                "domain": [
+                    "drive.dandaner.cn"
+                ],
+                "rule_set": [
+                    "cn_site"
+                ],
+                "server": "tx-udp"
+            },
+            {
+                "rule_set": [
+                    "disney_site",
+                    "netflix_site"
+                ],
+                "server": "alice-sg"
+            }
+        ],
+        "strategy": "ipv4_only",
+        "reverse_mapping": true,
+        "final": "cloudflare",
+        "independent_cache": false
+    },
+    "inbounds": [
+        {
+            "tag": "tun_in",
+            "type": "tun",
+            "interface_name": "tnu6",
+            "address": [
+                "172.18.0.1/30",
+                "fdfe:dcba:9876::1/126"
+            ],
+            "stack": "system",
+            "strict_route": true,
+            "auto_route": true,
+            "exclude_package": [
+                "com.sankuai.meituan.dispatch.crowdsource",
+                "com.tmri.app.main",
+                "com.sankuai.meituan",
+                "com.tencent.qqmusic",
+                "com.tencent.mm",
+                "com.zhaopin.social",
+                "com.tencent.wework",
+                "com.tencent.mobileqq",
+                "com.jingdong.app.mall",
+                "com.autonavi.minimap",
+                "com.taobao.idlefish",
+                "com.alibaba.android.rimet",
+                "com.taobao.taobao",
+                "com.eg.android.AlipayGphone"
+            ]
+        },
+        {
+            "tag": "mixed_in",
+            "type": "mixed",
+            "listen": "127.0.0.1",
+            "listen_port": 32550
+        }
+    ],
+    "outbounds": [
+        {
+            "tag": "🌍 境外出口",
+            "type": "selector",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "exclude",
+                    "keywords": [
+                        "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "\uD83C\uDDE8\uD83C\uDDF3 境内出口",
+            "type": "selector",
+            "outbounds": [
+                "direct-out",
+                "🌍 境外出口",
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "🇨🇳"
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "✈️ Telegram",
+            "type": "selector",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "exclude",
+                    "keywords": [
+                        "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "🤖 AI",
+            "type": "selector",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "exclude",
+                    "keywords": [
+                        "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2|🇭🇰"
+                    ]
+                }
+            ]
+        },
+        {
+            "tag": "🎈 订阅信息",
+            "type": "selector",
+            "outbounds": [
+                "{all}"
+            ],
+            "filter": [
+                {
+                    "action": "include",
+                    "keywords": [
+                        "\uD83D\uDFE2"
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "direct",
+            "tag": "direct-out"
+        }
+    ],
+    "route": {
+        "auto_detect_interface": true,
+        "final": "🌍 境外出口",
+        "default_domain_resolver": {
+            "server": "tx-udp",
+            "rewrite_tll": 60,
+            "client_subnet": "1.1.1.1"
+        },
+        "rules": [
+            {
+                "inbound": [
+                    "tun_in",
+                    "mixed_in"
+                ],
+                "action": "sniff"
+            },
+            {
+                "protocol": "dns",
+                "action": "hijack-dns"
+            },
+            {
+                "port": 21114,
+                "action": "reject"
+            },
+            {
+                "port": 53,
+                "action": "hijack-dns"
+            },
+            {
+                "clash_mode": "direct",
+                "outbound": "direct-out"
+            },
+            {
+                "clash_mode": "global",
+                "outbound": "🌍 境外出口"
+            },
+            {
+                "rule_set": [
+                    "private_site"
+                ],
+                "outbound": "direct-out"
+            },
+            {
+                "rule_set": [
+                    "tele_site"
+                ],
+                "outbound": "✈️ Telegram"
+            },
+            {
+                "rule_set": [
+                    "ai_site",
+                    "gemini_site"
+                ],
+                "outbound": "\uD83E\uDD16 AI"
+            },
+            {
+                "rule_set": [
+                    "google_site",
+                    "microsoft_site",
+                    "ncn_site"
+                ],
+                "outbound": "\uD83C\uDF0D 境外出口"
+            },
+            {
+                "rule_set": "cn_site",
+                "outbound": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
+            },
+            {
+                "ip_is_private": true,
+                "outbound": "direct-out"
+            },
+            {
+                "rule_set": "private_ip",
+                "outbound": "direct-out"
+            },
+            {
+                "rule_set": [
+                    "tele_ip"
+                ],
+                "outbound": "✈️ Telegram"
+            },
+            {
+                "rule_set": "cn_ip",
+                "outbound": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
+            }
+        ],
+        "rule_set": [
+            {
+                "tag": "cn_ip",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/cn_ip.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "cn_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/cn_site.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "private_ip",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/private_ip.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "private_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/private_site.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "google_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/google_site.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "talk_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/talkatone_site.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "talk_ip",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/talkatone_ip.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "tele_ip",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/telegram_ip.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "tele_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/telegram_site.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "ai_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/openai_site.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "gemini_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/google-gemini_site.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "tiktok_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/tiktok_site.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "microsoft_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/microsoft_site.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "netflix_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/netflix.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "disney_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/disney_site.srs",
+                "download_detour": "direct-out"
+            },
+            {
+                "tag": "ncn_site",
+                "type": "remote",
+                "format": "binary",
+                "update_interval": "6h",
+                "url": "https://oss.dandaner.cn/download/singbox/rule_set/geolocation-!cn.srs",
+                "download_detour": "direct-out"
+            }
+        ]
+    }
+}
