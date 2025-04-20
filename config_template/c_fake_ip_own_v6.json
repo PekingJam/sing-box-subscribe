@@ -161,6 +161,7 @@
       "tag": "⏬ 大量下载",
       "type": "selector",
       "outbounds": [
+        "\uD83C\uDDE8\uD83C\uDDF3 境内出口",
         "{all}"
       ],
       "filter": [
