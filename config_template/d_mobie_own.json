@@ -8,7 +8,7 @@
       "external_controller": "127.0.0.1:32590",
       "external_ui": "ui",
       "secret": "orange123",
-      "external_ui_download_url": "https://oss.dandaner.cn/download/webui/dashboard.zip",
+      "external_ui_download_url": "https://oss.dandaner.cn/download/webui/zashboard.zip",
       "external_ui_download_detour": "direct-out",
       "default_mode": "rule"
     },
@@ -17,6 +17,11 @@
     }
   },
   "dns": {
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    },
     "servers": [
       {
         "tag": "cloudflare",
@@ -35,6 +40,10 @@
         "type": "udp",
         "server": "119.29.29.29",
         "detour": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
+      },
+      {
+        "address": "fakeip",
+        "tag": "fakeip"
       }
     ],
     "rules": [
@@ -61,6 +70,13 @@
           "netflix_site"
         ],
         "server": "alice-sg"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip"
       }
     ],
     "strategy": "ipv4_only",
@@ -211,6 +227,21 @@
       ]
     },
     {
+      "tag": "⏬ 大量下载",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2|🇭🇰"
+          ]
+        }
+      ]
+    },
+    {
       "tag": "🎈 订阅信息",
       "type": "selector",
       "outbounds": [
@@ -292,6 +323,10 @@
           "ncn_site"
         ],
         "outbound": "\uD83C\uDF0D 境外出口"
+      },
+      {
+        "rule_set": "pikpak_site",
+        "outbound": "⏬ 大量下载"
       },
       {
         "rule_set": "cn_site",
@@ -443,6 +478,14 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://oss.dandaner.cn/download/singbox/rule_set/geolocation-!cn.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "pikpak_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://oss.dandaner.cn/download/singbox/rule_set/pippak.srs",
         "download_detour": "direct-out"
       }
     ]
