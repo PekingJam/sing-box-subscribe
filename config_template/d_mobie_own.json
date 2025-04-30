@@ -485,7 +485,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/pippak.srs",
+        "url": "https://oss.dandaner.cn/download/singbox/rule_set/pikpak.srs",
         "download_detour": "direct-out"
       }
     ]
