@@ -35,6 +35,12 @@
         "type": "udp",
         "server": "119.29.29.29",
         "detour": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
+      },
+      {
+        "type": "fakeip",
+        "tag": "fakeip",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
       }
     ],
     "rules": [
@@ -61,6 +67,13 @@
           "netflix_site"
         ],
         "server": "alice-sg"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip"
       }
     ],
     "strategy": "ipv4_only",

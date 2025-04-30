@@ -224,36 +224,6 @@
       ]
     },
     {
-      "tag": "⏬ 大量下载",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "exclude",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2|🇭🇰"
-          ]
-        }
-      ]
-    },
-    {
-      "tag": "🎈 订阅信息",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "include",
-          "keywords": [
-            "\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
       "type": "direct",
       "tag": "direct-out"
     }
@@ -475,14 +445,6 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://oss.dandaner.cn/download/singbox/rule_set/geolocation-!cn.srs",
-        "download_detour": "direct-out"
-      },
-      {
-        "tag": "pikpak_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/pikpak.srs",
         "download_detour": "direct-out"
       }
     ]
