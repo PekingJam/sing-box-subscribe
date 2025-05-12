@@ -150,7 +150,8 @@
         "com.eg.android.AlipayGphone",
         "idm.internet.download.manager",
         "bin.mt.plus",
-        "com.xiaomi.mibrain.speech"
+        "com.xiaomi.mibrain.speech",
+        "org.telegram.messenger.web"
       ]
     },
     {
