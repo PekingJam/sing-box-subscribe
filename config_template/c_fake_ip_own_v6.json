@@ -25,12 +25,6 @@
         "detour": "🌍 境外出口"
       },
       {
-        "tag": "alice-sg",
-        "type": "udp",
-        "server": "157.20.104.47",
-        "detour": "\uD83C\uDF0D 境外出口"
-      },
-      {
         "tag": "tx-udp",
         "type": "udp",
         "server": "119.29.29.29",
@@ -48,19 +42,13 @@
       },
       {
         "domain": [
-          "drive.dandaner.cn"
+          "drive.dandaner.cn",
+          "oss.dandaner.cn"
         ],
         "rule_set": [
           "cn_site"
         ],
         "server": "tx-udp"
-      },
-      {
-        "rule_set": [
-          "disney_site",
-          "netflix_site"
-        ],
-        "server": "alice-sg"
       }
     ],
     "strategy": "ipv4_only",
