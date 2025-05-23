@@ -229,10 +229,6 @@
         "outbound": "direct-out"
       },
       {
-        "rule_set": "private_ip",
-        "outbound": "direct-out"
-      },
-      {
         "rule_set": [
           "private_site"
         ],
