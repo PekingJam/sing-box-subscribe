@@ -139,8 +139,7 @@
         "idm.internet.download.manager",
         "bin.mt.plus",
         "com.xiaomi.mibrain.speech",
-        "org.telegram.messenger.web",
-        "com.hush.yamby"
+        "org.telegram.messenger.web"
       ]
     },
     {
@@ -255,6 +254,14 @@
         "outbound": "🌍 境外出口"
       },
       {
+        "ip_is_private": true,
+        "outbound": "direct-out"
+      },
+      {
+        "rule_set": "private_ip",
+        "outbound": "direct-out"
+      },
+      {
         "rule_set": [
           "private_site"
         ],
@@ -284,14 +291,6 @@
       {
         "rule_set": "cn_site",
         "outbound": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct-out"
-      },
-      {
-        "rule_set": "private_ip",
-        "outbound": "direct-out"
       },
       {
         "rule_set": [

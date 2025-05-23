@@ -225,6 +225,14 @@
         "outbound": "🌍 境外出口"
       },
       {
+        "ip_is_private": true,
+        "outbound": "direct-out"
+      },
+      {
+        "rule_set": "private_ip",
+        "outbound": "direct-out"
+      },
+      {
         "rule_set": [
           "private_site"
         ],
@@ -243,14 +251,6 @@
       {
         "process_name": [
           "aria2c.exe"
-        ],
-        "outbound": "⏬ 大量下载"
-      },
-      {
-        "domain":[
-          "stream1.misakaf.org",
-          "stream2.misakaf.org",
-          "stream3.misakaf.org"
         ],
         "outbound": "⏬ 大量下载"
       },
@@ -278,15 +278,7 @@
       {
         "rule_set": "cn_site",
         "outbound": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
-      },
-      {
-        "ip_is_private": true,
-        "outbound": "direct-out"
-      },
-      {
-        "rule_set": "private_ip",
-        "outbound": "direct-out"
-      },
+      }
       {
         "rule_set": [
           "tele_ip"
