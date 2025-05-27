@@ -264,6 +264,13 @@
         "outbound": "direct-out"
       },
       {
+        "domain": [
+          "tv1.micu.hk",
+          "tv.micu.hk"
+        ],
+        "outbound": "direct-out"
+      },
+      {
         "rule_set": [
           "tele_site"
         ],

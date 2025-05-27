@@ -235,6 +235,13 @@
         "outbound": "direct-out"
       },
       {
+        "domain": [
+          "tv1.micu.hk",
+          "tv.micu.hk"
+        ],
+        "outbound": "direct-out"
+      },
+      {
         "process_name": [
           "QQ.exe",
           "wetype_service.exe",
