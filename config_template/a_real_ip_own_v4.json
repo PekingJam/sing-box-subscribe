@@ -237,7 +237,8 @@
       {
         "domain": [
           "tv1.micu.hk",
-          "tv.micu.hk"
+          "tv.micu.hk",
+          "v1.micu.hk"
         ],
         "outbound": "direct-out"
       },
