@@ -51,6 +51,9 @@
           "drive.dandaner.cn",
           "oss.dandaner.cn"
         ],
+        "server": "tx-udp"
+      },
+      {
         "rule_set": [
           "cn_site"
         ],
