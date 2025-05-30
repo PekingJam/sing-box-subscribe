@@ -26,8 +26,8 @@
       },
       {
         "tag": "tx-udp",
-        "type": "udp",
-        "server": "119.29.29.29",
+        "type": "tls",
+        "server": "223.5.5.5",
         "detour": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
       },
       {
@@ -225,8 +225,7 @@
     "final": "🌍 境外出口",
     "default_domain_resolver": {
       "server": "tx-udp",
-      "rewrite_tll": 60,
-      "client_subnet": "1.1.1.1"
+      "rewrite_tll": 60
     },
     "rules": [
       {
