@@ -126,6 +126,21 @@
       ]
     },
     {
+      "tag": "⛅ 谷歌微软",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+          ]
+        }
+      ]
+    },
+    {
       "tag": "✈️ Telegram",
       "type": "selector",
       "outbounds": [
@@ -237,14 +252,11 @@
         "outbound": "direct-out"
       },
       {
-        "process_name": [
-          "QQ.exe",
-          "wetype_service.exe",
-          "wetype_update.exe",
-          "wetype_server.exe",
-          "RustDesk.exe"
+        "rule_set": [
+          "google_site",
+          "microsoft_site"
         ],
-        "outbound": "direct-out"
+        "outbound": "⛅ 微软谷歌"
       },
       {
         "process_name": [
@@ -267,8 +279,6 @@
       },
       {
         "rule_set": [
-          "google_site",
-          "microsoft_site",
           "ncn_site"
         ],
         "outbound": "\uD83C\uDF0D 境外出口"
@@ -276,6 +286,12 @@
       {
         "rule_set": "cn_site",
         "outbound": "\uD83C\uDDE8\uD83C\uDDF3 境内出口"
+      },
+      {
+        "rule_set": [
+          "google_ip"
+        ],
+        "outbound": "⛅ 谷歌微软"
       },
       {
         "rule_set": [
@@ -319,6 +335,14 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://oss.dandaner.cn/download/singbox/rule_set/private_site.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "google_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://oss.dandaner.cn/download/singbox/rule_set/google_ip.srs",
         "download_detour": "direct-out"
       },
       {
