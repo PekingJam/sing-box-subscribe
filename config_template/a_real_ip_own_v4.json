@@ -187,21 +187,6 @@
       ]
     },
     {
-      "tag": "🎈 订阅信息",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "include",
-          "keywords": [
-            "\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
       "type": "direct",
       "tag": "direct-out"
     }
