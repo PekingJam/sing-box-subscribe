@@ -161,6 +161,21 @@
       ]
     },
     {
+      "tag": "\uD83D\uDCFA Emby 流媒体",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+          ]
+        }
+      ]
+    },
+    {
       "tag": "🤖 AI",
       "type": "selector",
       "outbounds": [
@@ -231,6 +246,15 @@
           "microsoft_site"
         ],
         "outbound": "⛅ 谷歌微软"
+      },
+      {
+        "domain_suffix": [
+          ".micu.hk",
+          ".yezi.my",
+          ".aliz.work",
+          ".bangumi.ca"
+        ],
+        "outbound": "\uD83D\uDCFA Emby 流媒体"
       },
       {
         "rule_set": [
