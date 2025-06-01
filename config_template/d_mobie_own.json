@@ -306,6 +306,14 @@
         "download_detour": "direct-out"
       },
       {
+        "tag": "google_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://oss.dandaner.cn/download/singbox/rule_set/google_ip.srs",
+        "download_detour": "direct-out"
+      },
+      {
         "tag": "google_site",
         "type": "remote",
         "format": "binary",
