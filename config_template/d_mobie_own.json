@@ -230,7 +230,7 @@
           "google_site",
           "microsoft_site"
         ],
-        "outbound": "⛅ 微软谷歌"
+        "outbound": "⛅ 谷歌微软"
       },
       {
         "rule_set": [
