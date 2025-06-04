@@ -254,6 +254,13 @@
         "outbound": "direct-out"
       },
       {
+        "domain": [
+          "zox.889969.xyz",
+          "zoxui.889969.xyz"
+        ],
+        "outbound": "direct-out"
+      },
+      {
         "rule_set": [
           "google_site",
           "microsoft_site"
