@@ -83,7 +83,15 @@
       "exclude_package": [
         "com.xiaomi.market",
         "com.tencent.mm",
-        "com.eg.android.AlipayGphone"
+        "com.eg.android.AlipayGphone",
+        "com.ss.android.ugc.aweme",
+        "com.jingdong.app.mall",
+        "com.taobao.taobao",
+        "com.taobao.idlefish",
+        "com.sankuai.meituan",
+        "com.xunmeng.pinduoduo",
+        "com.cmbchina.ccd.pluto.cmbActivity",
+        "com.tencent.mobileqq"
       ]
     },
     {
