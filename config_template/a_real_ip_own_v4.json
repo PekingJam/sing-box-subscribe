@@ -33,15 +33,6 @@
         "detour": "境内出口"
       },
       {
-        "tag": "block-dns",
-        "type": "predefined",
-        "responses": [
-          {
-            "rcode": "REFUSED"
-          }
-        ]
-      },
-      {
         "type": "fakeip",
         "tag": "fakeip",
         "inet4_range": "198.18.0.0/15",
@@ -61,7 +52,7 @@
         "rule_set": [
           "ads_site"
         ],
-        "server": "block-dns"
+        "action": "reject"
       },
       {
         "domain": [
