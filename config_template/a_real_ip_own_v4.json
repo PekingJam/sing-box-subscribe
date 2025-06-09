@@ -476,7 +476,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/eset.srs",
+        "url": "https://oss.dandaner.cn/download/singbox/rule_set/eset_site.srs",
         "download_detour": "direct-out"
       },
       {

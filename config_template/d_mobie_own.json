@@ -83,7 +83,7 @@
         "172.18.0.1/30",
         "fdfe:dcba:9876::1/126"
       ],
-      "stack": "gvisor",
+      "stack": "system",
       "strict_route": true,
       "auto_route": true,
       "exclude_package": [
@@ -462,7 +462,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/eset.srs",
+        "url": "https://oss.dandaner.cn/download/singbox/rule_set/eset_site.srs",
         "download_detour": "direct-out"
       },
       {
