@@ -254,10 +254,10 @@
       },
       {
         "rule_set": [
-          "google_site",
-          "microsoft_site"
+          "ai_site",
+          "gemini_site"
         ],
-        "outbound": "谷歌微软"
+        "outbound": "大语言模型"
       },
       {
         "domain_suffix": [
@@ -270,16 +270,16 @@
       },
       {
         "rule_set": [
-          "tele_site"
+          "google_site",
+          "microsoft_site"
         ],
-        "outbound": "Telegram"
+        "outbound": "谷歌微软"
       },
       {
         "rule_set": [
-          "ai_site",
-          "gemini_site"
+          "tele_site"
         ],
-        "outbound": "大语言模型"
+        "outbound": "Telegram"
       },
       {
         "rule_set": [

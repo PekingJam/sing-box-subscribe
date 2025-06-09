@@ -260,13 +260,12 @@
         ],
         "outbound": "direct-out"
       },
-
       {
         "rule_set": [
-          "google_site",
-          "microsoft_site"
+          "ai_site",
+          "gemini_site"
         ],
-        "outbound": "谷歌微软"
+        "outbound": "大语言模型"
       },
       {
         "domain_suffix": [
@@ -276,6 +275,13 @@
           ".bangumi.ca"
         ],
         "outbound": "Emby 流媒体"
+      },
+      {
+        "rule_set": [
+          "google_site",
+          "microsoft_site"
+        ],
+        "outbound": "谷歌微软"
       },
       {
         "process_name": [
@@ -288,13 +294,6 @@
           "tele_site"
         ],
         "outbound": "Telegram"
-      },
-      {
-        "rule_set": [
-          "ai_site",
-          "gemini_site"
-        ],
-        "outbound": "大语言模型"
       },
       {
         "rule_set": [
