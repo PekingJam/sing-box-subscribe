@@ -33,6 +33,15 @@
         "detour": "境内出口"
       },
       {
+        "tag": "block-dns",
+        "type": "predefined",
+        "responses": [
+          {
+            "rcode": "REFUSED"
+          }
+        ]
+      },
+      {
         "type": "fakeip",
         "tag": "fakeip",
         "inet4_range": "198.18.0.0/15",
@@ -47,6 +56,12 @@
       {
         "clash_mode": "global",
         "server": "cloudflare"
+      },
+      {
+        "rule_set": [
+          "ads_site"
+        ],
+        "server": "block-dns"
       },
       {
         "domain": [
@@ -262,6 +277,12 @@
       },
       {
         "rule_set": [
+          "eset_site"
+        ],
+        "outbound": "direct-out"
+      },
+      {
+        "rule_set": [
           "ai_site",
           "gemini_site"
         ],
@@ -457,6 +478,22 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://oss.dandaner.cn/download/singbox/rule_set/geolocation-!cn.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "eset_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://oss.dandaner.cn/download/singbox/rule_set/eset.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "ads_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://oss.dandaner.cn/download/singbox/rule_set/category-ads-all.srs",
         "download_detour": "direct-out"
       }
     ]
