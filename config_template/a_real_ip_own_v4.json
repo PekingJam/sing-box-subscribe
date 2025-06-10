@@ -49,12 +49,6 @@
         "server": "cloudflare"
       },
       {
-        "rule_set": [
-          "ads_site"
-        ],
-        "action": "reject"
-      },
-      {
         "domain": [
           "drive.dandaner.cn",
           "oss.dandaner.cn"
