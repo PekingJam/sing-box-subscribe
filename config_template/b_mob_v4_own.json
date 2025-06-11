@@ -8,12 +8,14 @@
       "external_controller": "127.0.0.1:32590",
       "external_ui": "ui",
       "secret": "orange123",
-      "external_ui_download_url": "https://oss.dandaner.cn/download/webui/zashboard.zip",
+      "external_ui_download_url": "https://re.dandaner.cn/https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
       "external_ui_download_detour": "direct-out",
       "default_mode": "rule"
     },
     "cache_file": {
-      "enabled": true
+      "enabled": true,
+      "store_fakeip": false,
+      "store_rdrc": false
     }
   },
   "dns": {
@@ -27,8 +29,14 @@
       {
         "tag": "tx-udp",
         "type": "udp",
-        "server": "119.29.29.29",
+        "server": "180.184.1.1",
         "detour": "境内出口"
+      },
+      {
+        "type": "fakeip",
+        "tag": "fakeip",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
       }
     ],
     "rules": [
@@ -45,10 +53,20 @@
           "drive.dandaner.cn",
           "oss.dandaner.cn"
         ],
+        "server": "tx-udp"
+      },
+      {
         "rule_set": [
           "cn_site"
         ],
         "server": "tx-udp"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip"
       }
     ],
     "strategy": "ipv4_only",
@@ -110,7 +128,37 @@
       ]
     },
     {
+      "tag": "谷歌微软",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+          ]
+        }
+      ]
+    },
+    {
       "tag": "Telegram",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Emby 流媒体",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -156,21 +204,6 @@
       ]
     },
     {
-      "tag": "🎈 订阅信息",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "include",
-          "keywords": [
-            "\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
       "type": "direct",
       "tag": "direct-out"
     }
@@ -180,8 +213,7 @@
     "final": "境外出口",
     "default_domain_resolver": {
       "server": "tx-udp",
-      "rewrite_tll": 60,
-      "client_subnet": "1.1.1.1"
+      "rewrite_tll": 60
     },
     "rules": [
       {
@@ -212,16 +244,54 @@
         "outbound": "境外出口"
       },
       {
+        "ip_is_private": true,
+        "outbound": "direct-out"
+      },
+      {
         "rule_set": [
           "private_site"
         ],
         "outbound": "direct-out"
       },
       {
-        "domain":[
-          "stream1.misakaf.org",
-          "stream2.misakaf.org",
-          "stream3.misakaf.org"
+        "domain": [
+          "zox.889969.xyz",
+          "zoxui.889969.xyz"
+        ],
+        "outbound": "direct-out"
+      },
+      {
+        "rule_set": [
+          "eset_site"
+        ],
+        "outbound": "direct-out"
+      },
+      {
+        "rule_set": [
+          "ai_site",
+          "gemini_site"
+        ],
+        "outbound": "大语言模型"
+      },
+      {
+        "domain_suffix": [
+          ".micu.hk",
+          ".yezi.my",
+          ".aliz.work",
+          ".bangumi.ca"
+        ],
+        "outbound": "Emby 流媒体"
+      },
+      {
+        "rule_set": [
+          "google_site",
+          "microsoft_site"
+        ],
+        "outbound": "谷歌微软"
+      },
+      {
+        "process_name": [
+          "aria2c.exe"
         ],
         "outbound": "大量下载"
       },
@@ -233,15 +303,6 @@
       },
       {
         "rule_set": [
-          "ai_site",
-          "gemini_site"
-        ],
-        "outbound": "大语言模型"
-      },
-      {
-        "rule_set": [
-          "google_site",
-          "microsoft_site",
           "ncn_site"
         ],
         "outbound": "境外出口"
@@ -251,12 +312,10 @@
         "outbound": "境内出口"
       },
       {
-        "ip_is_private": true,
-        "outbound": "direct-out"
-      },
-      {
-        "rule_set": "private_ip",
-        "outbound": "direct-out"
+        "rule_set": [
+          "google_ip"
+        ],
+        "outbound": "谷歌微软"
       },
       {
         "rule_set": [
@@ -275,7 +334,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/cn_ip.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
         "download_detour": "direct-out"
       },
       {
@@ -283,7 +342,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/cn_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
         "download_detour": "direct-out"
       },
       {
@@ -291,7 +350,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/private_ip.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs",
         "download_detour": "direct-out"
       },
       {
@@ -299,7 +358,15 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/private_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "google_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
         "download_detour": "direct-out"
       },
       {
@@ -307,7 +374,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/google_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
         "download_detour": "direct-out"
       },
       {
@@ -315,7 +382,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/talkatone_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
         "download_detour": "direct-out"
       },
       {
@@ -323,7 +390,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/talkatone_ip.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/talkatone.srs",
         "download_detour": "direct-out"
       },
       {
@@ -331,7 +398,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/telegram_ip.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
         "download_detour": "direct-out"
       },
       {
@@ -339,7 +406,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/telegram_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
         "download_detour": "direct-out"
       },
       {
@@ -347,7 +414,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/openai_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs",
         "download_detour": "direct-out"
       },
       {
@@ -355,7 +422,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/google-gemini_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google-gemini.srs",
         "download_detour": "direct-out"
       },
       {
@@ -363,7 +430,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/tiktok_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs",
         "download_detour": "direct-out"
       },
       {
@@ -371,7 +438,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/microsoft_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
         "download_detour": "direct-out"
       },
       {
@@ -379,7 +446,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/netflix.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netfilx.srs",
         "download_detour": "direct-out"
       },
       {
@@ -387,7 +454,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/disney_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
         "download_detour": "direct-out"
       },
       {
@@ -395,7 +462,23 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/geolocation-!cn.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "eset_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/eset.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "ads_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
         "download_detour": "direct-out"
       }
     ]

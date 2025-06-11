@@ -8,7 +8,7 @@
       "external_controller": "127.0.0.1:32590",
       "external_ui": "ui",
       "secret": "orange123",
-      "external_ui_download_url": "https://oss.dandaner.cn/download/webui/zashboard.zip",
+      "external_ui_download_url": "https://re.dandaner.cn/https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
       "external_ui_download_detour": "direct-out",
       "default_mode": "rule"
     },
@@ -320,7 +320,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/cn_ip.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
         "download_detour": "direct-out"
       },
       {
@@ -328,7 +328,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/cn_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
         "download_detour": "direct-out"
       },
       {
@@ -336,7 +336,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/private_ip.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs",
         "download_detour": "direct-out"
       },
       {
@@ -344,7 +344,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/private_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs",
         "download_detour": "direct-out"
       },
       {
@@ -352,7 +352,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/google_ip.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
         "download_detour": "direct-out"
       },
       {
@@ -360,7 +360,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/google_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
         "download_detour": "direct-out"
       },
       {
@@ -368,7 +368,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/talkatone_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
         "download_detour": "direct-out"
       },
       {
@@ -376,7 +376,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/talkatone_ip.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/talkatone.srs",
         "download_detour": "direct-out"
       },
       {
@@ -384,7 +384,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/telegram_ip.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
         "download_detour": "direct-out"
       },
       {
@@ -392,7 +392,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/telegram_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
         "download_detour": "direct-out"
       },
       {
@@ -400,7 +400,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/openai_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs",
         "download_detour": "direct-out"
       },
       {
@@ -408,7 +408,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/google-gemini_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google-gemini.srs",
         "download_detour": "direct-out"
       },
       {
@@ -416,7 +416,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/tiktok_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs",
         "download_detour": "direct-out"
       },
       {
@@ -424,7 +424,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/microsoft_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
         "download_detour": "direct-out"
       },
       {
@@ -432,7 +432,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/netflix.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netfilx.srs",
         "download_detour": "direct-out"
       },
       {
@@ -440,7 +440,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/disney_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
         "download_detour": "direct-out"
       },
       {
@@ -448,7 +448,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/geolocation-!cn.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
         "download_detour": "direct-out"
       },
       {
@@ -456,7 +456,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/eset_site.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/eset.srs",
         "download_detour": "direct-out"
       },
       {
@@ -464,7 +464,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://oss.dandaner.cn/download/singbox/rule_set/category-ads-all.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
         "download_detour": "direct-out"
       }
     ]
