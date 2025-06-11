@@ -372,14 +372,6 @@
         "download_detour": "direct-out"
       },
       {
-        "tag": "talk_ip",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/talkatone.srs",
-        "download_detour": "direct-out"
-      },
-      {
         "tag": "tele_ip",
         "type": "remote",
         "format": "binary",
@@ -432,7 +424,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netfilx.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs",
         "download_detour": "direct-out"
       },
       {

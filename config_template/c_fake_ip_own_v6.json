@@ -57,16 +57,10 @@
       },
       {
         "rule_set": [
-          "cn_site"
+          "cn_site",
+          "private_site"
         ],
         "server": "tx-udp"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "fakeip"
       }
     ],
     "strategy": "ipv4_only",
@@ -85,7 +79,21 @@
       ],
       "stack": "system",
       "strict_route": true,
-      "auto_route": true
+      "auto_route": true,
+      "exclude_package": [
+        "com.xiaomi.market",
+        "com.tencent.mm",
+        "com.eg.android.AlipayGphone",
+        "com.ss.android.ugc.aweme",
+        "com.jingdong.app.mall",
+        "com.taobao.taobao",
+        "com.taobao.idlefish",
+        "com.sankuai.meituan",
+        "com.xunmeng.pinduoduo",
+        "com.cmbchina.ccd.pluto.cmbActivity",
+        "com.tencent.mobileqq",
+        "com.miui.carlink"
+      ]
     },
     {
       "tag": "mixed_in",
@@ -128,7 +136,7 @@
       ]
     },
     {
-      "tag": "谷歌微软",
+      "tag": "Telegram",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -143,7 +151,7 @@
       ]
     },
     {
-      "tag": "Telegram",
+      "tag": "谷歌微软",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -183,22 +191,6 @@
           "action": "exclude",
           "keywords": [
             "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2|🇭🇰"
-          ]
-        }
-      ]
-    },
-    {
-      "tag": "大量下载",
-      "type": "selector",
-      "outbounds": [
-        "境内出口",
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "exclude",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
           ]
         }
       ]
@@ -254,15 +246,15 @@
         "outbound": "direct-out"
       },
       {
-        "domain": [
-          "zox.889969.xyz",
-          "zoxui.889969.xyz"
+        "rule_set": [
+          "eset_site"
         ],
         "outbound": "direct-out"
       },
       {
-        "rule_set": [
-          "eset_site"
+        "domain": [
+          "zox.889969.xyz",
+          "zoxui.889969.xyz"
         ],
         "outbound": "direct-out"
       },
@@ -288,12 +280,6 @@
           "microsoft_site"
         ],
         "outbound": "谷歌微软"
-      },
-      {
-        "process_name": [
-          "aria2c.exe"
-        ],
-        "outbound": "大量下载"
       },
       {
         "rule_set": [
@@ -386,14 +372,6 @@
         "download_detour": "direct-out"
       },
       {
-        "tag": "talk_ip",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/talkatone.srs",
-        "download_detour": "direct-out"
-      },
-      {
         "tag": "tele_ip",
         "type": "remote",
         "format": "binary",
@@ -446,7 +424,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netfilx.srs",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs",
         "download_detour": "direct-out"
       },
       {
