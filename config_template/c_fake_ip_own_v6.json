@@ -70,30 +70,10 @@
   },
   "inbounds": [
     {
-      "tag": "tun_in",
-      "type": "tun",
-      "interface_name": "tnu6",
-      "address": [
-        "172.18.0.1/30",
-        "fdfe:dcba:9876::1/126"
-      ],
-      "stack": "system",
-      "strict_route": true,
-      "auto_route": true,
-      "exclude_package": [
-        "com.xiaomi.market",
-        "com.tencent.mm",
-        "com.eg.android.AlipayGphone",
-        "com.ss.android.ugc.aweme",
-        "com.jingdong.app.mall",
-        "com.taobao.taobao",
-        "com.taobao.idlefish",
-        "com.sankuai.meituan",
-        "com.xunmeng.pinduoduo",
-        "com.cmbchina.ccd.pluto.cmbActivity",
-        "com.tencent.mobileqq",
-        "com.miui.carlink"
-      ]
+      "type": "tproxy",
+      "tag": "tproxy-in",
+      "listen": "::",
+      "listen_port": 1536
     },
     {
       "tag": "mixed_in",
