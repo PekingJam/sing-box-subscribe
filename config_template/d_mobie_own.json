@@ -14,7 +14,7 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": false,
+      "store_fakeip": true,
       "store_rdrc": false
     }
   },
@@ -61,6 +61,13 @@
           "private_site"
         ],
         "server": "tx-udp"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip"
       }
     ],
     "strategy": "ipv4_only",
