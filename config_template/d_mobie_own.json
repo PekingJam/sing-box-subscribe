@@ -282,6 +282,14 @@
         "outbound": "Emby 流媒体"
       },
       {
+        "package_name": [
+          "com.mountains.hills",
+          "com.hush.yamby",
+          "com.attempt.afusekt"
+        ],
+        "outbound": "Emby 流媒体"
+      },
+      {
         "rule_set": [
           "google_site",
           "microsoft_site"
