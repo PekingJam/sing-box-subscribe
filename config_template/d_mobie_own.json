@@ -53,16 +53,14 @@
           "drive.dandaner.cn",
           "oss.dandaner.cn"
         ],
-        "server": "tx-udp",
-        "strategy": "prefer_ipv6"
+        "server": "tx-udp"
       },
       {
         "rule_set": [
           "cn_site",
           "private_site"
         ],
-        "server": "tx-udp",
-        "strategy": "prefer_ipv6"
+        "server": "tx-udp"
       },
       {
         "query_type": [
@@ -72,7 +70,7 @@
         "server": "fakeip"
       }
     ],
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "reverse_mapping": true,
     "final": "cloudflare",
     "independent_cache": false
