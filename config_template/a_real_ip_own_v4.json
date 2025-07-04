@@ -27,9 +27,8 @@
         "detour": "境外出口"
       },
       {
-        "tag": "tx-udp",
-        "type": "tls",
-        "server": "223.5.5.5",
+        "tag": "local-dns",
+        "type": "dhcp",
         "detour": "境内出口"
       },
       {
@@ -42,7 +41,7 @@
     "rules": [
       {
         "clash_mode": "direct",
-        "server": "tx-udp"
+        "server": "local-dns"
       },
       {
         "clash_mode": "global",
@@ -53,13 +52,13 @@
           "drive.dandaner.cn",
           "oss.dandaner.cn"
         ],
-        "server": "tx-udp"
+        "server": "local-dns"
       },
       {
         "rule_set": [
           "cn_site"
         ],
-        "server": "tx-udp"
+        "server": "local-dns"
       },
       {
         "query_type": [
@@ -212,7 +211,7 @@
     "auto_detect_interface": true,
     "final": "境外出口",
     "default_domain_resolver": {
-      "server": "tx-udp",
+      "server": "local-dns",
       "rewrite_tll": 60
     },
     "rules": [
