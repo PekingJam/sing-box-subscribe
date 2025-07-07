@@ -27,8 +27,9 @@
         "detour": "境外出口"
       },
       {
-        "tag": "local-dns",
-        "type": "dhcp",
+        "tag": "ali-dns",
+        "type": "tls",
+        "server": "266520-fnyoetwmuxps9zv0.alidns.com",
         "detour": "境内出口"
       },
       {
@@ -41,7 +42,7 @@
     "rules": [
       {
         "clash_mode": "direct",
-        "server": "local-dns"
+        "server": "ali-dns"
       },
       {
         "clash_mode": "global",
@@ -52,14 +53,14 @@
           "drive.dandaner.cn",
           "oss.dandaner.cn"
         ],
-        "server": "local-dns"
+        "server": "ali-dns"
       },
       {
         "rule_set": [
           "cn_site",
           "private_site"
         ],
-        "server": "local-dns"
+        "server": "ali-dns"
       },
       {
         "query_type": [
@@ -212,7 +213,7 @@
     "auto_detect_interface": true,
     "final": "境外出口",
     "default_domain_resolver": {
-      "server": "local-dns",
+      "server": "tx-dns",
       "rewrite_tll": 60
     },
     "rules": [
