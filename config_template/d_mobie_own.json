@@ -213,7 +213,7 @@
     "auto_detect_interface": true,
     "final": "境外出口",
     "default_domain_resolver": {
-      "server": "tx-dns",
+      "server": "ali-dns",
       "rewrite_tll": 60
     },
     "rules": [
