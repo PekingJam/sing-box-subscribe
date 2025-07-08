@@ -27,9 +27,16 @@
         "detour": "境外出口"
       },
       {
+        "tag": "ali-udp",
+        "type": "udp",
+        "server": "223.5.5.5",
+        "detour": "境内出口"
+      },
+      {
         "tag": "ali-dns",
         "type": "tls",
-        "server": "223.5.5.5",
+        "server": "266520-fnyoetwmuxps9zv0.alidns.com",
+        "domain_resolver": "ali-udp",
         "detour": "境内出口"
       },
       {
