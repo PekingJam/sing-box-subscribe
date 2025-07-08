@@ -29,7 +29,7 @@
       {
         "tag": "ali-dns",
         "type": "tls",
-        "server": "266520-fnyoetwmuxps9zv0.alidns.com",
+        "server": "223.5.5.5",
         "detour": "境内出口"
       },
       {
