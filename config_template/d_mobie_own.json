@@ -28,8 +28,7 @@
       },
       {
         "tag": "ali-dns",
-        "type": "tls",
-        "server": "266520-fnyoetwmuxps9zv0.alidns.com",
+        "type": "dhcp",
         "detour": "境内出口"
       },
       {

@@ -14,7 +14,7 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": false,
+      "store_fakeip": true,
       "store_rdrc": false
     }
   },
@@ -27,9 +27,8 @@
         "detour": "境外出口"
       },
       {
-        "tag": "tx-udp",
-        "type": "udp",
-        "server": "180.184.1.1",
+        "tag": "ali-dns",
+        "type": "dhcp",
         "detour": "境内出口"
       },
       {
@@ -42,7 +41,7 @@
     "rules": [
       {
         "clash_mode": "direct",
-        "server": "tx-udp"
+        "server": "ali-dns"
       },
       {
         "clash_mode": "global",
@@ -53,14 +52,21 @@
           "drive.dandaner.cn",
           "oss.dandaner.cn"
         ],
-        "server": "tx-udp"
+        "server": "ali-dns"
       },
       {
         "rule_set": [
           "cn_site",
           "private_site"
         ],
-        "server": "tx-udp"
+        "server": "ali-dns"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "fakeip"
       }
     ],
     "strategy": "ipv4_only",
@@ -70,10 +76,16 @@
   },
   "inbounds": [
     {
-      "type": "tproxy",
-      "tag": "tproxy-in",
-      "listen": "::",
-      "listen_port": 1536
+      "tag": "tun_in",
+      "type": "tun",
+      "interface_name": "tnu6",
+      "address": [
+        "172.18.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "stack": "system",
+      "strict_route": true,
+      "auto_route": true
     },
     {
       "tag": "mixed_in",
@@ -184,7 +196,7 @@
     "auto_detect_interface": true,
     "final": "境外出口",
     "default_domain_resolver": {
-      "server": "tx-udp",
+      "server": "ali-dns",
       "rewrite_tll": 60
     },
     "rules": [
@@ -251,6 +263,14 @@
           ".yezi.my",
           ".aliz.work",
           ".bangumi.ca"
+        ],
+        "outbound": "Emby 流媒体"
+      },
+      {
+        "package_name": [
+          "com.mountains.hills",
+          "com.hush.yamby",
+          "com.attempt.afusekt"
         ],
         "outbound": "Emby 流媒体"
       },
