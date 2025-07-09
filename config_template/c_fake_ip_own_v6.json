@@ -27,8 +27,16 @@
         "detour": "境外出口"
       },
       {
+        "tag": "ali-udp",
+        "type": "udp",
+        "server": "223.5.5.5",
+        "detour": "境内出口"
+      },
+      {
         "tag": "ali-dns",
-        "type": "dhcp",
+        "type": "tls",
+        "server": "266520-fnyoetwmuxps9zv0.alidns.com",
+        "domain_resolver": "ali-udp",
         "detour": "境内出口"
       },
       {
@@ -75,18 +83,6 @@
     "independent_cache": false
   },
   "inbounds": [
-    {
-      "tag": "tun_in",
-      "type": "tun",
-      "interface_name": "tnu6",
-      "address": [
-        "172.18.0.1/30",
-        "fdfe:dcba:9876::1/126"
-      ],
-      "stack": "system",
-      "strict_route": true,
-      "auto_route": true
-    },
     {
       "tag": "mixed_in",
       "type": "mixed",
