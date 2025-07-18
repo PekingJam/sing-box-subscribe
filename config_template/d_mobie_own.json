@@ -21,15 +21,15 @@
   "dns": {
     "servers": [
       {
-        "tag": "cloudflare",
+        "tag": "cf-dns",
         "type": "tls",
         "server": "1.1.1.1",
-        "detour": "境外出口"
+        "detour": "🌍 境外出口"
       },
       {
-        "tag": "ali-dns",
-        "type": "dhcp",
-        "detour": "境内出口"
+        "tag": "local-dns",
+        "type": "udp",
+        "server": "223.5.5.5"
       },
       {
         "type": "fakeip",
@@ -41,25 +41,18 @@
     "rules": [
       {
         "clash_mode": "direct",
-        "server": "ali-dns"
+        "server": "local-dns"
       },
       {
         "clash_mode": "global",
-        "server": "cloudflare"
-      },
-      {
-        "domain": [
-          "drive.dandaner.cn",
-          "oss.dandaner.cn"
-        ],
-        "server": "ali-dns"
+        "server": "cf-dns"
       },
       {
         "rule_set": [
           "cn_site",
           "private_site"
         ],
-        "server": "ali-dns"
+        "server": "local-dns"
       },
       {
         "query_type": [
@@ -71,7 +64,7 @@
     ],
     "strategy": "ipv4_only",
     "reverse_mapping": true,
-    "final": "cloudflare",
+    "final": "cf-dns",
     "independent_cache": false
   },
   "inbounds": [
@@ -85,23 +78,7 @@
       ],
       "stack": "system",
       "strict_route": true,
-      "auto_route": true,
-      "exclude_package": [
-        "com.xiaomi.market",
-        "com.tencent.mm",
-        "com.eg.android.AlipayGphone",
-        "com.ss.android.ugc.aweme",
-        "com.jingdong.app.mall",
-        "com.taobao.taobao",
-        "com.taobao.idlefish",
-        "com.sankuai.meituan",
-        "com.xunmeng.pinduoduo",
-        "com.cmbchina.ccd.pluto.cmbActivity",
-        "com.tencent.mobileqq",
-        "com.miui.carlink",
-        "com.baidu.carlife",
-        "com.baidu.carlife.xiaomi"
-      ]
+      "auto_route": true
     },
     {
       "tag": "mixed_in",
@@ -112,7 +89,11 @@
   ],
   "outbounds": [
     {
-      "tag": "境外出口",
+      "type": "direct",
+      "tag": "direct-out"
+    },
+    {
+      "tag": "🌍 境外出口",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -127,24 +108,7 @@
       ]
     },
     {
-      "tag": "境内出口",
-      "type": "selector",
-      "outbounds": [
-        "direct-out",
-        "境外出口",
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "include",
-          "keywords": [
-            "🇨🇳"
-          ]
-        }
-      ]
-    },
-    {
-      "tag": "Telegram",
+      "tag": "🪟 微软谷歌",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -159,7 +123,7 @@
       ]
     },
     {
-      "tag": "谷歌微软",
+      "tag": "✈️ Telegram",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -174,22 +138,7 @@
       ]
     },
     {
-      "tag": "Emby 流媒体",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "exclude",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
-      "tag": "大语言模型",
+      "tag": "🧠 大语言模型",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -202,17 +151,13 @@
           ]
         }
       ]
-    },
-    {
-      "type": "direct",
-      "tag": "direct-out"
     }
   ],
   "route": {
     "auto_detect_interface": true,
-    "final": "境外出口",
+    "final": "🌍 境外出口",
     "default_domain_resolver": {
-      "server": "ali-dns",
+      "server": "local-dns",
       "rewrite_tll": 60
     },
     "rules": [
@@ -241,7 +186,7 @@
       },
       {
         "clash_mode": "global",
-        "outbound": "境外出口"
+        "outbound": "🌍 境外出口"
       },
       {
         "ip_is_private": true,
@@ -260,74 +205,50 @@
         "outbound": "direct-out"
       },
       {
-        "domain": [
-          "zox.889969.xyz",
-          "zoxui.889969.xyz"
-        ],
-        "outbound": "direct-out"
-      },
-      {
         "rule_set": [
           "ai_site",
           "gemini_site"
         ],
-        "outbound": "大语言模型"
-      },
-      {
-        "domain_suffix": [
-          ".micu.hk",
-          ".yezi.my",
-          ".aliz.work",
-          ".bangumi.ca"
-        ],
-        "outbound": "Emby 流媒体"
-      },
-      {
-        "package_name": [
-          "com.mountains.hills",
-          "com.hush.yamby",
-          "com.attempt.afusekt"
-        ],
-        "outbound": "Emby 流媒体"
+        "outbound": "🧠 大语言模型"
       },
       {
         "rule_set": [
           "google_site",
           "microsoft_site"
         ],
-        "outbound": "谷歌微软"
+        "outbound": "🪟 微软谷歌"
       },
       {
         "rule_set": [
           "tele_site"
         ],
-        "outbound": "Telegram"
+        "outbound": "✈️ Telegram"
       },
       {
         "rule_set": [
           "ncn_site"
         ],
-        "outbound": "境外出口"
+        "outbound": "🌍 境外出口"
       },
       {
         "rule_set": "cn_site",
-        "outbound": "境内出口"
+        "outbound": "direct-out"
       },
       {
         "rule_set": [
           "google_ip"
         ],
-        "outbound": "谷歌微软"
+        "outbound": "🪟 微软谷歌"
       },
       {
         "rule_set": [
           "tele_ip"
         ],
-        "outbound": "Telegram"
+        "outbound": "✈️ Telegram"
       },
       {
         "rule_set": "cn_ip",
-        "outbound": "境内出口"
+        "outbound": "direct-out"
       }
     ],
     "rule_set": [
