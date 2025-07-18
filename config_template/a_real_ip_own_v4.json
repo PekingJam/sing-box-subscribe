@@ -247,7 +247,7 @@
       },
       {
         "rule_set": "cn_ip",
-        "outbound": "境内出口"
+        "outbound": "direct-out"
       }
     ],
     "rule_set": [
