@@ -86,7 +86,7 @@
       "tag": "境内出口",
       "type": "selector",
       "outbounds": [
-        "境内出口",
+        "direct-out",
         "\uD83C\uDF0D 境外出口"
       ]
     },
