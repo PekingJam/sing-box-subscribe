@@ -24,7 +24,7 @@
         "tag": "cf-dns",
         "type": "tls",
         "server": "1.1.1.1",
-        "detour": "境外出口"
+        "detour": "🌍 境外出口"
       },
       {
         "tag": "local-dns",
@@ -92,7 +92,7 @@
       "tag": "direct-out"
     },
     {
-      "tag": "境外出口",
+      "tag": "🌍 境外出口",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "tag": "谷歌微软",
+      "tag": "Ⓜ 谷歌微软",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "tag": "Telegram",
+      "tag": "✈ Telegram",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -137,7 +137,7 @@
       ]
     },
     {
-      "tag": "大语言模型",
+      "tag": "🤖 大语言模型",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -154,7 +154,7 @@
   ],
   "route": {
     "auto_detect_interface": true,
-    "final": "境外出口",
+    "final": "🌍 境外出口",
     "default_domain_resolver": {
       "server": "local-dns",
       "rewrite_tll": 60
@@ -185,7 +185,7 @@
       },
       {
         "clash_mode": "global",
-        "outbound": "境外出口"
+        "outbound": "🌍 境外出口"
       },
       {
         "ip_is_private": true,
@@ -208,26 +208,26 @@
           "ai_site",
           "gemini_site"
         ],
-        "outbound": "大语言模型"
+        "outbound": "🤖 大语言模型"
       },
       {
         "rule_set": [
           "google_site",
           "microsoft_site"
         ],
-        "outbound": "谷歌微软"
+        "outbound": "Ⓜ 谷歌微软"
       },
       {
         "rule_set": [
           "tele_site"
         ],
-        "outbound": "Telegram"
+        "outbound": "✈ Telegram"
       },
       {
         "rule_set": [
           "ncn_site"
         ],
-        "outbound": "境外出口"
+        "outbound": "🌍 境外出口"
       },
       {
         "rule_set": "cn_site",
@@ -237,13 +237,13 @@
         "rule_set": [
           "google_ip"
         ],
-        "outbound": "谷歌微软"
+        "outbound": "Ⓜ 谷歌微软"
       },
       {
         "rule_set": [
           "tele_ip"
         ],
-        "outbound": "Telegram"
+        "outbound": "✈ Telegram"
       },
       {
         "rule_set": "cn_ip",
