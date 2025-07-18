@@ -53,13 +53,6 @@
           "private_site"
         ],
         "server": "local-dns"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "fakeip"
       }
     ],
     "strategy": "ipv4_only",
