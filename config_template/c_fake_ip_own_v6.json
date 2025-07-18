@@ -31,6 +31,12 @@
         "type": "dhcp"
       },
       {
+        "tag": "ali-dns",
+        "type": "udp",
+        "server": "223.5.5.5",
+        "detour": "direct-out"
+      },
+      {
         "type": "fakeip",
         "tag": "fakeip",
         "inet4_range": "198.18.0.0/15",
@@ -156,7 +162,7 @@
     "auto_detect_interface": true,
     "final": "境外出口",
     "default_domain_resolver": {
-      "server": "dhcp-dns",
+      "server": "ali-dns",
       "rewrite_tll": 60
     },
     "rules": [
