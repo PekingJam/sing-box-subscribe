@@ -28,8 +28,7 @@
       },
       {
         "tag": "local-dns",
-        "type": "local",
-        "detour": "direct-out"
+        "type": "local"
       },
       {
         "type": "fakeip",
