@@ -107,7 +107,7 @@
       ]
     },
     {
-      "tag": "Ⓜ 谷歌微软",
+      "tag": "🪟 微软谷歌",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "tag": "✈ Telegram",
+      "tag": "✈️ Telegram",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -137,7 +137,7 @@
       ]
     },
     {
-      "tag": "🤖 大语言模型",
+      "tag": "🧠 大语言模型",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -208,20 +208,20 @@
           "ai_site",
           "gemini_site"
         ],
-        "outbound": "🤖 大语言模型"
+        "outbound": "🧠 大语言模型"
       },
       {
         "rule_set": [
           "google_site",
           "microsoft_site"
         ],
-        "outbound": "Ⓜ 谷歌微软"
+        "outbound": "🪟 微软谷歌"
       },
       {
         "rule_set": [
           "tele_site"
         ],
-        "outbound": "✈ Telegram"
+        "outbound": "✈️ Telegram"
       },
       {
         "rule_set": [
@@ -237,13 +237,13 @@
         "rule_set": [
           "google_ip"
         ],
-        "outbound": "Ⓜ 谷歌微软"
+        "outbound": "🪟 微软谷歌"
       },
       {
         "rule_set": [
           "tele_ip"
         ],
-        "outbound": "✈ Telegram"
+        "outbound": "✈️ Telegram"
       },
       {
         "rule_set": "cn_ip",
