@@ -21,7 +21,7 @@
   "dns": {
     "servers": [
       {
-        "tag": "cloudflare",
+        "tag": "cf-dns",
         "type": "tls",
         "server": "1.1.1.1",
         "detour": "境外出口"
@@ -44,11 +44,12 @@
       },
       {
         "clash_mode": "global",
-        "server": "cloudflare"
+        "server": "cf-dns"
       },
       {
         "rule_set": [
-          "cn_site"
+          "cn_site",
+          "private_site"
         ],
         "server": "dhcp-dns"
       },
@@ -62,7 +63,7 @@
     ],
     "strategy": "ipv4_only",
     "reverse_mapping": true,
-    "final": "cloudflare",
+    "final": "cf-dns",
     "independent_cache": false
   },
   "inbounds": [
@@ -86,6 +87,10 @@
     }
   ],
   "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct-out"
+    },
     {
       "tag": "境外出口",
       "type": "selector",
@@ -145,10 +150,6 @@
           ]
         }
       ]
-    },
-    {
-      "type": "direct",
-      "tag": "direct-out"
     }
   ],
   "route": {
