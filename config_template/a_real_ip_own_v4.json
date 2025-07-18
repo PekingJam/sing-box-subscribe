@@ -27,9 +27,8 @@
         "detour": "境外出口"
       },
       {
-        "tag": "local-dns",
-        "type": "dhcp",
-        "detour": "境内出口"
+        "tag": "dhcp-dns",
+        "type": "dhcp"
       },
       {
         "type": "fakeip",
@@ -41,24 +40,17 @@
     "rules": [
       {
         "clash_mode": "direct",
-        "server": "local-dns"
+        "server": "dhcp-dns"
       },
       {
         "clash_mode": "global",
         "server": "cloudflare"
       },
       {
-        "domain": [
-          "drive.dandaner.cn",
-          "oss.dandaner.cn"
-        ],
-        "server": "local-dns"
-      },
-      {
         "rule_set": [
           "cn_site"
         ],
-        "server": "local-dns"
+        "server": "dhcp-dns"
       },
       {
         "query_type": [
@@ -110,23 +102,6 @@
       ]
     },
     {
-      "tag": "境内出口",
-      "type": "selector",
-      "outbounds": [
-        "direct-out",
-        "境外出口",
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "include",
-          "keywords": [
-            "🇨🇳"
-          ]
-        }
-      ]
-    },
-    {
       "tag": "谷歌微软",
       "type": "selector",
       "outbounds": [
@@ -157,21 +132,6 @@
       ]
     },
     {
-      "tag": "Emby 流媒体",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "exclude",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
       "tag": "大语言模型",
       "type": "selector",
       "outbounds": [
@@ -187,22 +147,6 @@
       ]
     },
     {
-      "tag": "大量下载",
-      "type": "selector",
-      "outbounds": [
-        "境内出口",
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "exclude",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
       "type": "direct",
       "tag": "direct-out"
     }
@@ -211,7 +155,7 @@
     "auto_detect_interface": true,
     "final": "境外出口",
     "default_domain_resolver": {
-      "server": "local-dns",
+      "server": "dhcp-dns",
       "rewrite_tll": 60
     },
     "rules": [
@@ -253,13 +197,6 @@
         "outbound": "direct-out"
       },
       {
-        "domain": [
-          "zox.889969.xyz",
-          "zoxui.889969.xyz"
-        ],
-        "outbound": "direct-out"
-      },
-      {
         "rule_set": [
           "eset_site"
         ],
@@ -273,26 +210,11 @@
         "outbound": "大语言模型"
       },
       {
-        "domain_suffix": [
-          ".micu.hk",
-          ".yezi.my",
-          ".aliz.work",
-          ".bangumi.ca"
-        ],
-        "outbound": "Emby 流媒体"
-      },
-      {
         "rule_set": [
           "google_site",
           "microsoft_site"
         ],
         "outbound": "谷歌微软"
-      },
-      {
-        "process_name": [
-          "aria2c.exe"
-        ],
-        "outbound": "大量下载"
       },
       {
         "rule_set": [
@@ -308,7 +230,7 @@
       },
       {
         "rule_set": "cn_site",
-        "outbound": "境内出口"
+        "outbound": "direct-out"
       },
       {
         "rule_set": [
