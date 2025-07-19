@@ -72,6 +72,22 @@
       "type": "mixed",
       "listen": "127.0.0.1",
       "listen_port": 32550
+    },
+    {
+      "tag": "tun_in",
+      "type": "tun",
+      "address": [
+        "172.18.0.1/30",
+        "fdfe:dcba:9876::1/126"
+      ],
+      "route_exclude_address": [
+        "224.0.0.0/4",
+        "192.168.0.0/16",
+        "10.0.0.0/8"
+      ],
+      "stack": "system",
+      "strict_route": true,
+      "auto_route": true
     }
   ],
   "outbounds": [
