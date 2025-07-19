@@ -21,23 +21,14 @@
   "dns": {
     "servers": [
       {
-        "tag": "cloudflare",
+        "tag": "cf-dns",
         "type": "tls",
         "server": "1.1.1.1",
         "detour": "境外出口"
       },
       {
-        "tag": "ali-udp",
-        "type": "udp",
-        "server": "223.5.5.5",
-        "detour": "境内出口"
-      },
-      {
-        "tag": "ali-dns",
-        "type": "tls",
-        "server": "266520-fnyoetwmuxps9zv0.alidns.com",
-        "domain_resolver": "ali-udp",
-        "detour": "境内出口"
+        "tag": "local-dns",
+        "type": "local"
       },
       {
         "type": "fakeip",
@@ -49,25 +40,18 @@
     "rules": [
       {
         "clash_mode": "direct",
-        "server": "ali-dns"
+        "server": "local-dns"
       },
       {
         "clash_mode": "global",
-        "server": "cloudflare"
-      },
-      {
-        "domain": [
-          "drive.dandaner.cn",
-          "oss.dandaner.cn"
-        ],
-        "server": "ali-dns"
+        "server": "cf-dns"
       },
       {
         "rule_set": [
           "cn_site",
           "private_site"
         ],
-        "server": "ali-dns"
+        "server": "local-dns"
       },
       {
         "query_type": [
@@ -79,7 +63,7 @@
     ],
     "strategy": "ipv4_only",
     "reverse_mapping": true,
-    "final": "cloudflare",
+    "final": "cf-dns",
     "independent_cache": false
   },
   "inbounds": [
@@ -102,23 +86,6 @@
           "action": "exclude",
           "keywords": [
             "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
-      "tag": "境内出口",
-      "type": "selector",
-      "outbounds": [
-        "direct-out",
-        "境外出口",
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "include",
-          "keywords": [
-            "🇨🇳"
           ]
         }
       ]
@@ -192,7 +159,7 @@
     "auto_detect_interface": true,
     "final": "境外出口",
     "default_domain_resolver": {
-      "server": "ali-dns",
+      "server": "local-dns",
       "rewrite_tll": 60
     },
     "rules": [
@@ -235,40 +202,10 @@
       },
       {
         "rule_set": [
-          "eset_site"
-        ],
-        "outbound": "direct-out"
-      },
-      {
-        "domain": [
-          "zox.889969.xyz",
-          "zoxui.889969.xyz"
-        ],
-        "outbound": "direct-out"
-      },
-      {
-        "rule_set": [
           "ai_site",
           "gemini_site"
         ],
         "outbound": "大语言模型"
-      },
-      {
-        "domain_suffix": [
-          ".micu.hk",
-          ".yezi.my",
-          ".aliz.work",
-          ".bangumi.ca"
-        ],
-        "outbound": "Emby 流媒体"
-      },
-      {
-        "package_name": [
-          "com.mountains.hills",
-          "com.hush.yamby",
-          "com.attempt.afusekt"
-        ],
-        "outbound": "Emby 流媒体"
       },
       {
         "rule_set": [
@@ -291,7 +228,7 @@
       },
       {
         "rule_set": "cn_site",
-        "outbound": "境内出口"
+        "outbound": "direct-out"
       },
       {
         "rule_set": [
@@ -307,7 +244,7 @@
       },
       {
         "rule_set": "cn_ip",
-        "outbound": "境内出口"
+        "outbound": "direct-out"
       }
     ],
     "rule_set": [
