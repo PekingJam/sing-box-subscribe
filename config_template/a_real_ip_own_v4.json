@@ -68,18 +68,6 @@
   },
   "inbounds": [
     {
-      "tag": "tun_in",
-      "type": "tun",
-      "interface_name": "tnu6",
-      "address": [
-        "172.18.0.1/30",
-        "fdfe:dcba:9876::1/126"
-      ],
-      "stack": "system",
-      "strict_route": true,
-      "auto_route": true
-    },
-    {
       "tag": "mixed_in",
       "type": "mixed",
       "listen": "127.0.0.1",
@@ -107,7 +95,7 @@
       ]
     },
     {
-      "tag": "🪟 微软谷歌",
+      "tag": "✈️ Telegram",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -122,7 +110,7 @@
       ]
     },
     {
-      "tag": "✈️ Telegram",
+      "tag": "🪟 微软谷歌",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -172,10 +160,6 @@
         "action": "hijack-dns"
       },
       {
-        "port": 21114,
-        "action": "reject"
-      },
-      {
         "port": 53,
         "action": "hijack-dns"
       },
@@ -194,12 +178,6 @@
       {
         "rule_set": [
           "private_site"
-        ],
-        "outbound": "direct-out"
-      },
-      {
-        "rule_set": [
-          "eset_site"
         ],
         "outbound": "direct-out"
       },
