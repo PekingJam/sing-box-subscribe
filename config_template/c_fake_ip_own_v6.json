@@ -5,7 +5,7 @@
   },
   "experimental": {
     "clash_api": {
-      "external_controller": "127.0.0.1:32590",
+      "external_controller": "127.0.0.1:9090",
       "external_ui": "ui",
       "secret": "orange123",
       "external_ui_download_url": "https://re.dandaner.cn/https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
@@ -21,14 +21,14 @@
   "dns": {
     "servers": [
       {
-        "tag": "cf-dns",
+        "tag": "cloudflare",
         "type": "tls",
         "server": "1.1.1.1",
-        "detour": "🌍 境外出口"
+        "detour": "境外出口"
       },
       {
-        "tag": "local-dns",
-        "type": "local"
+        "tag": "ali-dns",
+        "type": "dhcp"
       },
       {
         "type": "fakeip",
@@ -40,18 +40,25 @@
     "rules": [
       {
         "clash_mode": "direct",
-        "server": "local-dns"
+        "server": "ali-dns"
       },
       {
         "clash_mode": "global",
-        "server": "cf-dns"
+        "server": "cloudflare"
+      },
+      {
+        "domain": [
+          "drive.dandaner.cn",
+          "oss.dandaner.cn"
+        ],
+        "server": "ali-dns"
       },
       {
         "rule_set": [
           "cn_site",
           "private_site"
         ],
-        "server": "local-dns"
+        "server": "ali-dns"
       },
       {
         "query_type": [
@@ -63,7 +70,7 @@
     ],
     "strategy": "ipv4_only",
     "reverse_mapping": true,
-    "final": "cf-dns",
+    "final": "cloudflare",
     "independent_cache": false
   },
   "inbounds": [
@@ -74,29 +81,15 @@
       "listen_port": 32550
     },
     {
-      "tag": "tun_in",
-      "type": "tun",
-      "address": [
-        "172.18.0.1/30",
-        "fdfe:dcba:9876::1/126"
-      ],
-      "route_exclude_address": [
-        "224.0.0.0/4",
-        "192.168.0.0/16",
-        "10.0.0.0/8"
-      ],
-      "stack": "system",
-      "strict_route": true,
-      "auto_route": true
+      "tag": "tproxy-in",
+      "type": "tproxy",
+      "listen": "127.0.0.1",
+      "listen_port": 9898
     }
   ],
   "outbounds": [
     {
-      "type": "direct",
-      "tag": "direct-out"
-    },
-    {
-      "tag": "🌍 境外出口",
+      "tag": "境外出口",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -111,7 +104,24 @@
       ]
     },
     {
-      "tag": "✈️ Telegram",
+      "tag": "境内出口",
+      "type": "selector",
+      "outbounds": [
+        "direct-out",
+        "境外出口",
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "include",
+          "keywords": [
+            "🇨🇳"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Telegram",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -126,7 +136,7 @@
       ]
     },
     {
-      "tag": "🪟 微软谷歌",
+      "tag": "谷歌微软",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -141,7 +151,7 @@
       ]
     },
     {
-      "tag": "🧠 大语言模型",
+      "tag": "大语言模型",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -154,13 +164,17 @@
           ]
         }
       ]
+    },
+    {
+      "type": "direct",
+      "tag": "direct-out"
     }
   ],
   "route": {
     "auto_detect_interface": true,
-    "final": "🌍 境外出口",
+    "final": "境外出口",
     "default_domain_resolver": {
-      "server": "local-dns",
+      "server": "ali-dns",
       "rewrite_tll": 60
     },
     "rules": [
@@ -176,6 +190,10 @@
         "action": "hijack-dns"
       },
       {
+        "port": 21114,
+        "action": "reject"
+      },
+      {
         "port": 53,
         "action": "hijack-dns"
       },
@@ -185,7 +203,7 @@
       },
       {
         "clash_mode": "global",
-        "outbound": "🌍 境外出口"
+        "outbound": "境外出口"
       },
       {
         "ip_is_private": true,
@@ -199,49 +217,62 @@
       },
       {
         "rule_set": [
+          "eset_site"
+        ],
+        "outbound": "direct-out"
+      },
+      {
+        "domain": [
+          "zox.889969.xyz",
+          "zoxui.889969.xyz"
+        ],
+        "outbound": "direct-out"
+      },
+      {
+        "rule_set": [
           "ai_site",
           "gemini_site"
         ],
-        "outbound": "🧠 大语言模型"
+        "outbound": "大语言模型"
       },
       {
         "rule_set": [
           "google_site",
           "microsoft_site"
         ],
-        "outbound": "🪟 微软谷歌"
+        "outbound": "谷歌微软"
       },
       {
         "rule_set": [
           "tele_site"
         ],
-        "outbound": "✈️ Telegram"
+        "outbound": "Telegram"
       },
       {
         "rule_set": [
           "ncn_site"
         ],
-        "outbound": "🌍 境外出口"
+        "outbound": "境外出口"
       },
       {
         "rule_set": "cn_site",
-        "outbound": "direct-out"
+        "outbound": "境内出口"
       },
       {
         "rule_set": [
           "google_ip"
         ],
-        "outbound": "🪟 微软谷歌"
+        "outbound": "谷歌微软"
       },
       {
         "rule_set": [
           "tele_ip"
         ],
-        "outbound": "✈️ Telegram"
+        "outbound": "Telegram"
       },
       {
         "rule_set": "cn_ip",
-        "outbound": "direct-out"
+        "outbound": "境内出口"
       }
     ],
     "rule_set": [
