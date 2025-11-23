@@ -28,7 +28,7 @@
       },
       {
         "tag": "ali-dns",
-        "type": "dhcp"
+        "type": "local"
       },
       {
         "type": "fakeip",
