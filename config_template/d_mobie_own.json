@@ -28,7 +28,9 @@
       },
       {
         "tag": "ali-dns",
-        "type": "local"
+        "type": "udp",
+        "server": "223.5.5.5",
+        "detour": "境内出口"
       },
       {
         "type": "fakeip",
