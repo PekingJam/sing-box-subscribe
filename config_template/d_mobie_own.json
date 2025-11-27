@@ -57,6 +57,14 @@
       },
       {
         "rule_set": [
+          "dingtalk_site",
+          "google_site",
+          "microsoft_site"
+        ],
+        "server": "cloudflare"
+      },
+      {
+        "rule_set": [
           "cn_site",
           "private_site"
         ],
@@ -70,7 +78,7 @@
         "server": "fakeip"
       }
     ],
-    "strategy": "ipv4_only",
+    "strategy": "prefer_ipv4",
     "reverse_mapping": true,
     "final": "cloudflare",
     "independent_cache": false
@@ -360,21 +368,6 @@
       ]
     },
     {
-      "tag": "Emby 流媒体",
-      "type": "selector",
-      "outbounds": [
-        "{all}"
-      ],
-      "filter": [
-        {
-          "action": "exclude",
-          "keywords": [
-            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
-          ]
-        }
-      ]
-    },
-    {
       "tag": "大语言模型",
       "type": "selector",
       "outbounds": [
@@ -460,14 +453,6 @@
         "outbound": "大语言模型"
       },
       {
-        "package_name": [
-          "com.mountains.hills",
-          "com.hush.yamby",
-          "com.attempt.afusekt"
-        ],
-        "outbound": "Emby 流媒体"
-      },
-      {
         "rule_set": [
           "google_site",
           "microsoft_site"
@@ -482,7 +467,8 @@
       },
       {
         "rule_set": [
-          "ncn_site"
+          "ncn_site",
+          "dingtalk_site"
         ],
         "outbound": "境外出口"
       },
@@ -650,6 +636,14 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "dingtalk_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/dingtalk.srs",
         "download_detour": "direct-out"
       }
     ]
