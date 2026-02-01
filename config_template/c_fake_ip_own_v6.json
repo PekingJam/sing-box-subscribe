@@ -231,7 +231,8 @@
       {
         "rule_set": [
           "ai_site",
-          "gemini_site"
+          "gemini_site",
+          "steam_site"
         ],
         "outbound": "大语言模型"
       },
@@ -418,6 +419,14 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
+        "download_detour": "direct-out"
+      },
+      {
+        "tag": "steam_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam.srs",
         "download_detour": "direct-out"
       }
     ]
