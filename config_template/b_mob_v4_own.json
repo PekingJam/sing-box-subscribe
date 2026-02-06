@@ -33,13 +33,6 @@
         "detour": "境内出口"
       },
       {
-        "tag": "ali-dns",
-        "type": "tls",
-        "server": "266520-fnyoetwmuxps9zv0.alidns.com",
-        "domain_resolver": "ali-udp",
-        "detour": "境内出口"
-      },
-      {
         "type": "fakeip",
         "tag": "fakeip",
         "inet4_range": "198.18.0.0/15",
@@ -49,7 +42,7 @@
     "rules": [
       {
         "clash_mode": "direct",
-        "server": "ali-dns"
+        "server": "ali-udp"
       },
       {
         "clash_mode": "global",
@@ -60,14 +53,14 @@
           "drive.dandaner.cn",
           "oss.dandaner.cn"
         ],
-        "server": "ali-dns"
+        "server": "ali-udp"
       },
       {
         "rule_set": [
           "cn_site",
           "private_site"
         ],
-        "server": "ali-dns"
+        "server": "ali-udp"
       },
       {
         "query_type": [
@@ -219,7 +212,7 @@
     "auto_detect_interface": true,
     "final": "境外出口",
     "default_domain_resolver": {
-      "server": "ali-dns",
+      "server": "ali-udp",
       "rewrite_tll": 60
     },
     "rules": [
@@ -261,12 +254,6 @@
         "outbound": "direct-out"
       },
       {
-        "rule_set": [
-          "eset_site"
-        ],
-        "outbound": "direct-out"
-      },
-      {
         "domain": [
           "zox.889969.xyz",
           "zoxui.889969.xyz"
@@ -287,14 +274,6 @@
           ".yezi.my",
           ".aliz.work",
           ".bangumi.ca"
-        ],
-        "outbound": "Emby 流媒体"
-      },
-      {
-        "package_name": [
-          "com.mountains.hills",
-          "com.hush.yamby",
-          "com.attempt.afusekt"
         ],
         "outbound": "Emby 流媒体"
       },
