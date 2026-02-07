@@ -29,7 +29,7 @@
       {
         "tag": "ali-udp",
         "type": "udp",
-        "server": "223.5.5.5",
+        "server": "119.29.29.29",
         "detour": "境内出口"
       },
       {
@@ -70,7 +70,7 @@
         "server": "fakeip"
       }
     ],
-    "strategy": "ipv4_only",
+    "strategy": "prefer_ipv4",
     "reverse_mapping": true,
     "final": "cloudflare",
     "independent_cache": false
