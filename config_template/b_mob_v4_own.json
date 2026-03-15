@@ -8,8 +8,8 @@
       "external_controller": "127.0.0.1:32590",
       "external_ui": "ui",
       "secret": "orange123",
-      "external_ui_download_url": "https://re.dandaner.cn/https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
-      "external_ui_download_detour": "direct-out",
+      "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
+      "external_ui_download_detour": "境外出口",
       "default_mode": "rule"
     },
     "cache_file": {
@@ -47,13 +47,6 @@
       {
         "clash_mode": "global",
         "server": "cloudflare"
-      },
-      {
-        "domain": [
-          "drive.dandaner.cn",
-          "oss.dandaner.cn"
-        ],
-        "server": "ali-udp"
       },
       {
         "rule_set": [
@@ -254,13 +247,6 @@
         "outbound": "direct-out"
       },
       {
-        "domain": [
-          "zox.889969.xyz",
-          "zoxui.889969.xyz"
-        ],
-        "outbound": "direct-out"
-      },
-      {
         "rule_set": [
           "ai_site",
           "gemini_site",
@@ -274,7 +260,8 @@
           ".lyezi.cc",
           ".lyezi.xyz",
           ".aliz.work",
-          ".bangumi.ca"
+          ".bangumi.ca",
+          ".dpdns.org"
         ],
         "outbound": "Emby 流媒体"
       },
@@ -284,12 +271,6 @@
           "microsoft_site"
         ],
         "outbound": "谷歌微软"
-      },
-      {
-        "rule_set": [
-          "spotify_site"
-        ],
-        "outbound": "Spotify"
       },
       {
         "rule_set": [
@@ -330,160 +311,160 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "cn_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "private_ip",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "private_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "google_ip",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "google_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "talk_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "tele_ip",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "tele_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "ai_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "gemini_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google-gemini.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google-gemini.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "tiktok_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "microsoft_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "netflix_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "disney_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "ncn_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "eset_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/eset.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/eset.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "spotify_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/spotify.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/spotify.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "ads_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "steam_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam.srs",
+        "download_detour": "境外出口"
       }
     ]
   }
