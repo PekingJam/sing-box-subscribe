@@ -14,7 +14,7 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": true,
+      "store_fakeip": false,
       "store_rdrc": false
     }
   },
@@ -22,27 +22,26 @@
     "servers": [
       {
         "tag": "cloudflare",
-        "type": "tls",
+        "type": "https",
         "server": "1.1.1.1",
         "detour": "境外出口"
       },
       {
-        "tag": "ali-udp",
-        "type": "udp",
-        "server": "119.29.29.29",
+        "tag": "ali-https",
+        "type": "https",
+        "server": "223.5.5.5",
         "detour": "境内出口"
       },
       {
         "type": "fakeip",
         "tag": "fakeip",
-        "inet4_range": "198.18.0.0/15",
-        "inet6_range": "fc00::/18"
+        "inet4_range": "198.18.0.0/15"
       }
     ],
     "rules": [
       {
         "clash_mode": "direct",
-        "server": "ali-udp"
+        "server": "ali-https"
       },
       {
         "clash_mode": "global",
@@ -53,17 +52,16 @@
           "cn_site",
           "private_site"
         ],
-        "server": "ali-udp"
+        "server": "ali-https"
       },
       {
         "query_type": [
-          "A",
-          "AAAA"
+          "A"
         ],
         "server": "fakeip"
       }
     ],
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "reverse_mapping": true,
     "final": "cloudflare",
     "independent_cache": false
@@ -79,7 +77,24 @@
       ],
       "stack": "system",
       "strict_route": true,
-      "auto_route": true
+      "auto_route": true,
+      "exclude_package": [
+        "com.sankuai.meituan",
+        "com.douban.frodo",
+        "com.luna.music",
+        "cn.cyberIdentity.certification",
+        "com.bankcomm.Bankcomm",
+        "com.tencent.mm",
+        "com.mi.health",
+        "com.omarea.vtools",
+        "com.github.bumblebee202111.doubean",
+        "com.ss.android.ugc.aweme",
+        "com.coolapk.market",
+        "com.jingdong.app.mall",
+        "com.autonavi.minimap",
+        "com.taobao.taobao",
+        "com.eg.android.AlipayGphone"
+      ]
     },
     {
       "tag": "mixed_in",
@@ -190,7 +205,7 @@
     "auto_detect_interface": true,
     "final": "境外出口",
     "default_domain_resolver": {
-      "server": "ali-udp",
+      "server": "ali-https",
       "rewrite_tll": 60
     },
     "rules": [
