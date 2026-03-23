@@ -27,11 +27,8 @@
         "detour": "境外出口"
       },
       {
-        "tag": "ali-https",
-        "type": "https",
-        "server": "266520-turjv7pq5z7ta2.alidns.com",
-        "domain_resolver": "ali-udp",
-        "detour": "境内出口"
+        "tag": "dhcp",
+        "type": "dhcp"
       },
       {
         "tag": "ali-udp",
@@ -48,7 +45,7 @@
     "rules": [
       {
         "clash_mode": "direct",
-        "server": "ali-https"
+        "server": "dhcp"
       },
       {
         "clash_mode": "global",
@@ -59,7 +56,7 @@
           "cn_site",
           "private_site"
         ],
-        "server": "ali-https"
+        "server": "dhcp"
       },
       {
         "query_type": [
@@ -83,49 +80,7 @@
       ],
       "stack": "system",
       "strict_route": true,
-      "auto_route": true,
-      "exclude_package": [
-        "com.toyota.ftmsApp",
-        "com.tencent.tmgp.sgame",
-        "com.hikvision.automobileblack",
-        "com.tmri.app.main",
-        "com.sankuai.meituan",
-        "com.douban.frodo",
-        "com.sinovatech.unicom.ui",
-        "com.luna.music",
-        "com.baidu.carlife.xiaomi",
-        "com.MobileTicket",
-        "cn.cyberIdentity.certification",
-        "com.xingin.xhs",
-        "com.bankcomm.Bankcomm",
-        "com.tencent.mm",
-        "com.miui.carlink",
-        "com.mi.health",
-        "com.miui.player",
-        "com.github.bumblebee202111.doubean",
-        "com.xunmeng.pinduoduo",
-        "name.monwf.customiuizer",
-        "com.mipay.wallet",
-        "com.xiaomi.shop",
-        "com.ss.android.ugc.aweme",
-        "com.tencent.mobileqq",
-        "com.ss.android.auto",
-        "com.unionpay",
-        "com.miui.notes",
-        "com.xiaomi.market",
-        "com.zhihu.android",
-        "com.chinamworld.main",
-        "com.jingdong.app.mall",
-        "com.autonavi.minimap",
-        "com.taobao.idlefish",
-        "com.alibaba.android.rimet",
-        "com.sina.weibo",
-        "com.taobao.taobao",
-        "com.cmbchina.ccd.pluto.cmbActivity",
-        "com.ct.client",
-        "tv.danmaku.bili",
-        "com.eg.android.AlipayGphone"
-      ]
+      "auto_route": true
     },
     {
       "tag": "mixed_in",
@@ -236,7 +191,7 @@
     "auto_detect_interface": true,
     "final": "境外出口",
     "default_domain_resolver": {
-      "server": "ali-https",
+      "server": "dhcp",
       "rewrite_tll": 60
     },
     "rules": [

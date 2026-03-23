@@ -9,12 +9,12 @@
       "external_ui": "ui",
       "secret": "orange123",
       "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
-      "external_ui_download_detour": "direct-out",
+      "external_ui_download_detour": "境外出口",
       "default_mode": "rule"
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": true,
+      "store_fakeip": false,
       "store_rdrc": false
     }
   },
@@ -22,12 +22,19 @@
     "servers": [
       {
         "tag": "cloudflare",
-        "type": "tls",
+        "type": "https",
         "server": "1.1.1.1",
         "detour": "境外出口"
       },
       {
-        "tag": "ali-dns",
+        "tag": "ali-https",
+        "type": "https",
+        "server": "266520-turjv7pq5z7ta2.alidns.com",
+        "domain_resolver": "ali-udp",
+        "detour": "境内出口"
+      },
+      {
+        "tag": "ali-udp",
         "type": "udp",
         "server": "223.5.5.5",
         "detour": "境内出口"
@@ -35,32 +42,16 @@
       {
         "type": "fakeip",
         "tag": "fakeip",
-        "inet4_range": "198.18.0.0/15",
-        "inet6_range": "fc00::/18"
+        "inet4_range": "198.18.0.0/15"
       }
     ],
     "rules": [
       {
         "clash_mode": "direct",
-        "server": "ali-dns"
+        "server": "ali-https"
       },
       {
         "clash_mode": "global",
-        "server": "cloudflare"
-      },
-      {
-        "domain": [
-          "drive.dandaner.cn",
-          "oss.dandaner.cn"
-        ],
-        "server": "ali-dns"
-      },
-      {
-        "rule_set": [
-          "dingtalk_site",
-          "google_site",
-          "microsoft_site"
-        ],
         "server": "cloudflare"
       },
       {
@@ -68,17 +59,16 @@
           "cn_site",
           "private_site"
         ],
-        "server": "ali-dns"
+        "server": "ali-https"
       },
       {
         "query_type": [
-          "A",
-          "AAAA"
+          "A"
         ],
         "server": "fakeip"
       }
     ],
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "reverse_mapping": true,
     "final": "cloudflare",
     "independent_cache": false
@@ -87,213 +77,54 @@
     {
       "tag": "tun_in",
       "type": "tun",
-      "interface_name": "rmnet_data8",
+      "interface_name": "tnu6",
       "address": [
-        "172.18.0.1/30",
-        "fdfe:dcba:9876::1/126"
+        "172.18.0.1/30"
       ],
       "stack": "system",
       "strict_route": true,
       "auto_route": true,
       "exclude_package": [
-        "com.miui.screenrecorder",
-        "com.xiaomi.cameramind",
-        "com.quark.browser",
-        "com.miui.contentextension",
-        "com.sankuai.meituan.dispatch.crowdsource",
-        "com.android.providers.telephony",
-        "com.android.dynsystem",
-        "com.miui.powerkeeper",
-        "com.unionpay.tsmservice.mi",
-        "com.miui.qr",
-        "com.android.providers.calendar",
-        "com.miui.contentcatcher",
-        "com.milink.service",
-        "com.xiaomi.account",
-        "com.bsp.catchlog",
-        "com.xiaomi.cameratools",
-        "miui.systemui.plugin",
-        "com.xiaomi.mi_connect_service",
-        "com.android.bankabc",
+        "com.toyota.ftmsApp",
+        "com.tencent.tmgp.sgame",
+        "com.hikvision.automobileblack",
         "com.tmri.app.main",
         "com.sankuai.meituan",
         "com.douban.frodo",
-        "com.miui.packageinstaller",
         "com.sinovatech.unicom.ui",
-        "com.android.updater",
         "com.luna.music",
-        "com.xiaomi.gamecenter.sdk.service",
-        "com.android.htmlviewer",
-        "com.miui.extraphoto",
-        "com.miui.securityadd",
-        "com.qualcomm.qti.uceShimService",
-        "com.miui.gallery",
-        "com.android.quicksearchbox",
-        "com.android.mms.service",
-        "com.xiaomi.payment",
-        "me.ele.crowdsource",
-        "com.miui.securitycenter",
-        "com.waimaiii.waimaiii",
         "com.baidu.carlife.xiaomi",
         "com.MobileTicket",
         "cn.cyberIdentity.certification",
-        "com.miui.thirdappassistant",
-        "com.android.browser",
-        "com.miui.systemAdSolution",
-        "com.xiaomi.aiasst.vision",
-        "com.miui.tsmclient",
-        "com.android.soundrecorder",
-        "com.baidu.input_mi",
-        "com.xiaomi.trustservice",
-        "com.miui.guardprovider",
-        "me.ele",
-        "com.miui.backup",
-        "com.miui.notification",
+        "com.xingin.xhs",
         "com.bankcomm.Bankcomm",
-        "com.miui.micloudsync",
-        "com.xiaomi.barrage",
         "com.tencent.mm",
-        "com.miui.daemon",
-        "com.sankuai.meituan.takeoutnew",
-        "com.xiaomi.ab",
-        "com.xiaomi.mibrain.speech",
-        "com.sdu.didi.psnger",
-        "com.wapi.wapicertmanage",
-        "com.qti.qualcomm.datastatusnotification",
-        "android",
-        "com.android.contacts",
-        "com.miui.huanji",
-        "com.miui.hybrid",
-        "com.miui.vsimcore",
-        "com.miui.securitycore",
         "com.miui.carlink",
-        "com.miui.uireporter",
         "com.mi.health",
-        "com.qti.qualcomm.deviceinfo",
-        "cn.wps.moffice_eng.xiaomi.lite",
-        "com.android.mms",
-        "com.android.nfc",
-        "com.android.ons",
-        "com.android.stk",
-        "com.xiaomi.simactivate.service",
-        "com.mfashiongallery.emag",
-        "vendor.qti.qesdk.sysservice",
-        "com.xiaomi.registration",
-        "com.deepseek.chat",
-        "com.xiaomi.touchservice",
-        "com.miui.phrase",
         "com.miui.player",
-        "com.android.provision",
-        "bin.mt.plus",
-        "com.android.calendar",
-        "com.miui.virtualsim",
-        "com.miui.compass",
-        "com.qualcomm.qti.dynamicddsservice",
-        "com.miui.aod",
-        "com.miui.cit",
-        "com.qualcomm.qti.xrvd.service",
-        "cn.gov.pbc.dcep",
-        "com.android.providers.settings",
-        "com.miui.vpnsdkmanager",
-        "com.xiaomi.location.fused",
-        "com.android.printspooler",
-        "com.miui.personalassistant",
-        "com.miui.misound",
-        "com.qualcomm.qti.services.systemhelper",
-        "com.android.incallui",
-        "com.duokan.phone.remotecontroller",
-        "com.miui.bugreport",
-        "com.android.inputdevices",
-        "com.fido.asm",
-        "com.qti.dpmserviceapp",
+        "com.github.bumblebee202111.doubean",
         "com.xunmeng.pinduoduo",
-        "com.android.fileexplorer",
-        "com.miui.voicetrigger",
-        "com.xiaomi.macro",
-        "com.xiaomi.phone",
-        "com.miui.cloudbackup",
-        "com.novatek.novavis",
-        "com.fanli.android.apps",
+        "name.monwf.customiuizer",
         "com.mipay.wallet",
-        "com.android.server.telecom",
-        "com.android.keychain",
-        "com.android.camera",
-        "com.xiaomi.aicr",
-        "com.xiaomi.xmsf",
+        "com.xiaomi.shop",
         "com.ss.android.ugc.aweme",
-        "com.miui.mishare.connectivity",
-        "com.baidu.tieba",
         "com.tencent.mobileqq",
         "com.ss.android.auto",
-        "com.android.localtransport",
-        "com.xiaomi.finddevice",
-        "com.android.DeviceAsWebcam",
-        "com.xiaomi.joyose",
-        "com.iflytek.inputmethod.miui",
         "com.unionpay",
-        "com.miui.newhome",
-        "com.miui.nextpay",
         "com.miui.notes",
-        "com.miui.wmsvc",
         "com.xiaomi.market",
-        "com.xiaomi.misettings",
-        "com.xiaomi.mirror",
-        "com.miui.cloudservice",
-        "com.tencent.soter.soterserver",
-        "com.xiaomi.gnss.polaris",
-        "com.miui.audiomonitor",
-        "com.xiaomi.otrpbroker",
-        "com.sohu.inputmethod.sogou.xiaomi",
-        "com.miui.touchassistant",
-        "com.xiaomi.aon",
-        "com.xiaomi.mis",
-        "com.xiaomi.mtb",
-        "com.realtech.xiaocan",
         "com.zhihu.android",
-        "com.miui.calculator",
-        "com.coolapk.market",
         "com.chinamworld.main",
-        "com.xiaomi.bluetooth",
-        "com.xiaomi.metoknlp",
-        "com.miui.cleanmaster",
-        "com.miui.analytics",
-        "com.android.settings",
-        "com.miui.weather2",
         "com.jingdong.app.mall",
         "com.autonavi.minimap",
-        "com.qualcomm.location",
-        "com.xiaomi.scanner",
         "com.taobao.idlefish",
-        "com.miui.misightservice",
-        "com.miui.mediaeditor",
-        "com.miui.yellowpage",
-        "com.miui.accessibility",
-        "com.miui.voiceassist",
+        "com.alibaba.android.rimet",
         "com.sina.weibo",
-        "com.android.phone",
-        "com.miui.screenshot",
-        "com.miui.greenguard",
-        "com.android.location.fused",
-        "com.android.deskclock",
-        "com.android.systemui",
-        "com.android.thememanager",
-        "vendor.qti.imsdatachannel",
-        "com.miui.mediaviewer",
         "com.taobao.taobao",
-        "com.lbe.security.miui",
         "com.cmbchina.ccd.pluto.cmbActivity",
-        "com.android.bluetooth",
-        "com.miui.newmidrive",
-        "com.qualcomm.atfwd",
-        "com.netease.cloudmusic",
         "com.ct.client",
-        "vendor.qti.imsrcs",
         "tv.danmaku.bili",
-        "com.eg.android.AlipayGphone",
-        "com.miui.core",
-        "com.miui.home",
-        "com.xiaomi.aiasst.service",
-        "com.xiaomi.digitalkey"
+        "com.eg.android.AlipayGphone"
       ]
     },
     {
@@ -367,6 +198,21 @@
       ]
     },
     {
+      "tag": "Emby 流媒体",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+          ]
+        }
+      ]
+    },
+    {
       "tag": "大语言模型",
       "type": "selector",
       "outbounds": [
@@ -390,7 +236,7 @@
     "auto_detect_interface": true,
     "final": "境外出口",
     "default_domain_resolver": {
-      "server": "ali-dns",
+      "server": "ali-https",
       "rewrite_tll": 60
     },
     "rules": [
@@ -433,19 +279,6 @@
       },
       {
         "rule_set": [
-          "eset_site"
-        ],
-        "outbound": "direct-out"
-      },
-      {
-        "domain": [
-          "zox.889969.xyz",
-          "zoxui.889969.xyz"
-        ],
-        "outbound": "direct-out"
-      },
-      {
-        "rule_set": [
           "ai_site",
           "gemini_site",
           "steam_site"
@@ -453,10 +286,20 @@
         "outbound": "大语言模型"
       },
       {
+        "domain_suffix": [
+          ".micu.hk",
+          ".lyezi.cc",
+          ".lyezi.xyz",
+          ".aliz.work",
+          ".bangumi.ca",
+          ".dpdns.org"
+        ],
+        "outbound": "Emby 流媒体"
+      },
+      {
         "rule_set": [
           "google_site",
-          "microsoft_site",
-          "dingtalk_site"
+          "microsoft_site"
         ],
         "outbound": "谷歌微软"
       },
@@ -499,160 +342,160 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "cn_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "private_ip",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "private_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "google_ip",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "google_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "talk_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "tele_ip",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "tele_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/talkatone.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "ai_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "gemini_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google-gemini.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google-gemini.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "tiktok_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "microsoft_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "netflix_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "disney_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "ncn_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "eset_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/eset.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/eset.srs",
+        "download_detour": "境外出口"
+      },
+      {
+        "tag": "spotify_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/spotify.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "ads_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
-        "download_detour": "direct-out"
-      },
-      {
-        "tag": "dingtalk_site",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/dingtalk.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs",
+        "download_detour": "境外出口"
       },
       {
         "tag": "steam_site",
         "type": "remote",
         "format": "binary",
         "update_interval": "6h",
-        "url": "https://re.dandaner.cn/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam.srs",
-        "download_detour": "direct-out"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/steam.srs",
+        "download_detour": "境外出口"
       }
     ]
   }
