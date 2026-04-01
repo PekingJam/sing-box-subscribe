@@ -40,6 +40,14 @@
         "detour": "境内出口"
       },
       {
+        "tag": "local-dns",
+        "type": "local"
+      },
+      {
+        "tag": "dhcp-dns",
+        "type": "dhcp"
+      },
+      {
         "type": "fakeip",
         "tag": "fakeip",
         "inet4_range": "198.18.0.0/15"
