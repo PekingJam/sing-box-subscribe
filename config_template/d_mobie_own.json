@@ -369,7 +369,7 @@
         "rule_set": [
           "google_ip"
         ],
-        "outbound": "谷歌微软"
+        "outbound": "Google"
       },
       {
         "rule_set": [
