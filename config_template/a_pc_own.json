@@ -138,7 +138,22 @@
       ]
     },
     {
-      "tag": "谷歌微软",
+      "tag": "Google",
+      "type": "selector",
+      "outbounds": [
+        "{all}"
+      ],
+      "filter": [
+        {
+          "action": "exclude",
+          "keywords": [
+            "\uD83C\uDDE8\uD83C\uDDF3|\uD83D\uDFE2"
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "Microsoft",
       "type": "selector",
       "outbounds": [
         "{all}"
@@ -276,10 +291,21 @@
       },
       {
         "rule_set": [
-          "google_site",
+          "github_site"
+        ],
+        "outbound": "境外出口"
+      },
+      {
+        "rule_set": [
+          "google_site"
+        ],
+        "outbound": "Google"
+      },
+      {
+        "rule_set": [
           "microsoft_site"
         ],
-        "outbound": "谷歌微软"
+        "outbound": "Microsoft"
       },
       {
         "rule_set": [
@@ -301,7 +327,7 @@
         "rule_set": [
           "google_ip"
         ],
-        "outbound": "谷歌微软"
+        "outbound": "Google"
       },
       {
         "rule_set": [
@@ -353,6 +379,14 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs",
+        "download_detour": "境外出口"
+      },
+      {
+        "tag": "github_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs",
         "download_detour": "境外出口"
       },
       {
