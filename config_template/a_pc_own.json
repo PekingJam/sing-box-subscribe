@@ -257,7 +257,8 @@
         "rule_set": [
           "ai_site",
           "gemini_site",
-          "steam_site"
+          "steam_site",
+          "anthropic_site"
         ],
         "outbound": "大语言模型"
       },
@@ -268,7 +269,8 @@
           ".lyezi.xyz",
           ".aliz.work",
           ".bangumi.ca",
-          ".dpdns.org"
+          ".dpdns.org",
+          ".as174.de"
         ],
         "outbound": "Emby 流媒体"
       },
@@ -399,6 +401,14 @@
         "format": "binary",
         "update_interval": "6h",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google-gemini.srs",
+        "download_detour": "境外出口"
+      },
+      {
+        "tag": "anthropic_site",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "6h",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/anthropic.srs",
         "download_detour": "境外出口"
       },
       {
