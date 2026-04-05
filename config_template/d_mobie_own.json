@@ -64,6 +64,13 @@
       },
       {
         "rule_set": [
+          "ads_site"
+        ],
+        "action": "predefined",
+        "rcode": "REFUSED"
+      },
+      {
+        "rule_set": [
           "cn_site",
           "private_site"
         ],
