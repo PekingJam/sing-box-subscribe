@@ -72,6 +72,18 @@
         ],
         "server": "ali-https"
       },
+      { 
+      "domain_suffix": [
+          ".micu.hk",
+          ".lyezi.cc",
+          ".lyezi.xyz",
+          ".aliz.work",
+          ".bangumi.ca",
+          ".dpdns.org",
+          ".as174.de"
+        ],
+      "server": "cloudflare"
+      },
       {
         "query_type": [
           "A"
