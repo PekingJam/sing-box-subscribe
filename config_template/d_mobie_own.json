@@ -66,6 +66,13 @@
         "rcode": "REFUSED"
       },
       {
+        "domain": [
+          "tv.micu.hk",
+          "tv1.micu.hk"
+        ],
+        "server": "ali-https"
+      },
+      {
         "rule_set": [
           "cn_site",
           "private_site"
@@ -317,6 +324,13 @@
       },
       {
         "ip_is_private": true,
+        "outbound": "direct-out"
+      },
+      {
+        "domain": [
+          "tv.micu.hk",
+          "tv1.micu.hk"
+        ],
         "outbound": "direct-out"
       },
       {
